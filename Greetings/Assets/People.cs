@@ -10,4 +10,24 @@ using Enums;
         
         public Greetings WantedGreeting;
         public Roles Role;
+        public bool Greeted=false;
+        public bool GreetedRight;
+        public float GreetingTime;
+        public float MaxGreetingTime;
+
+
+
+    public void SetGreetedRight(bool GreetedRight)
+    {
+        Greeted = true;
+        this.GreetedRight = GreetedRight;
     }
+
+    public void SetGreetingTime(float GreetingTime)
+    {
+        this.GreetingTime = GreetingTime;
+    }
+
+
+
+}

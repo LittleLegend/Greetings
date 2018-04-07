@@ -11,7 +11,7 @@ public class PeopleFactory {
     public Friend Friend;
     public Mother Mother;
     
-
+    
 
     public PeopleFactory()
     {
@@ -20,7 +20,7 @@ public class PeopleFactory {
 
     public People createRandom()
     {
-        int rand = Random.Range(1,4);
+        int rand = Random.Range(1,5);
         People result=null;
 
         switch (rand)

@@ -8,7 +8,8 @@ public class Mother : People
 
         public Mother()
         {
-            WantedGreeting = Greetings.Hug;
+        MaxGreetingTime = 5;
+        WantedGreeting = Greetings.Hug;
         Role = Roles.Mother;
     }
     }

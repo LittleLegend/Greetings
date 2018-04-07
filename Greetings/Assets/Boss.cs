@@ -8,6 +8,7 @@ using Enums;
 
         public Boss()
         {
+        MaxGreetingTime = 5;
             WantedGreeting = Greetings.Shake;
             Role = Roles.Boss;
         }

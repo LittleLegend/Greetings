@@ -9,21 +9,22 @@ public class Player: MonoBehaviour {
 
     public void Shake()
     {
-        Doorstep.CompareGreetings(Greetings.Shake);
+        
+        Doorstep.HandleGreetings(Greetings.Shake);
     }
     public void Hug()
     {
-        Doorstep.CompareGreetings(Greetings.Hug);
+        Doorstep.HandleGreetings(Greetings.Hug);
     }
 
     public void Kiss()
     {
-        Doorstep.CompareGreetings(Greetings.Kiss);
+        Doorstep.HandleGreetings(Greetings.Kiss);
     }
 
     public void Bump()
     {
-        Doorstep.CompareGreetings(Greetings.Bump);
+        Doorstep.HandleGreetings(Greetings.Bump);
     }
 
 }
