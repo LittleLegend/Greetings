@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enums;
 
 
-    public class Wife : People
+public class Wife : People
     {
         public Wife()
         {
-            WantedGreeting = Greeting.Kiss;
-        }
+            WantedGreeting = Greetings.Kiss;
+        Role = Roles.Wife;
+    }
 
     }
 

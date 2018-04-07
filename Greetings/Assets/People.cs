@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enums;
 
     public abstract class People
     {
 
-        public enum Greeting { Shake, Bump, Hug, Kiss }
-
-        public Greeting WantedGreeting;
+        
+        
+        public Greetings WantedGreeting;
+        public Roles Role;
     }
