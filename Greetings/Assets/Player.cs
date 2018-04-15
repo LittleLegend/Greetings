@@ -5,7 +5,12 @@ using Enums;
 
 public class Player: MonoBehaviour {
 
+    [SerializeField]
     public Doorstep Doorstep;
+
+    [SerializeField]
+    public InputController InputController;
+
 
     public void Shake()
     {
@@ -25,6 +30,11 @@ public class Player: MonoBehaviour {
     public void Bump()
     {
         Doorstep.HandleGreetings(Greetings.Bump);
+    }
+
+    public void OpenDoor()
+    {
+        Doorstep.StartGreetTime();
     }
 
 }

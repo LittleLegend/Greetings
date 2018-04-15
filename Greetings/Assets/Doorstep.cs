@@ -5,22 +5,36 @@ using Enums;
 
 public class Doorstep : MonoBehaviour {
 
-	public Player Player;
-    public PeopleFactory PeopleFactory;
-    public List<People> PeopleList;
-    public People CurrentPerson;
-    public Timer Timer;
-    
-    
+    [SerializeField]
+    public Player Player;
 
-	void Start () {
+    [SerializeField]
+    public PeopleFactory PeopleFactory;
+
+    [SerializeField]
+    public List<People> PeopleList;
+
+    [SerializeField]
+    public People CurrentGuest;
+
+    [SerializeField]
+    public Animator Doorstep_Animator;
+    
+    [SerializeField]
+    public AnimationController AnimationController;
+    
+    [SerializeField]
+    public Timer Timer;
+
+    [SerializeField]
+    public GameState CurrentGameState;
+
+    void Start () {
 
         PeopleList = new List<People>();
         PeopleFactory = new PeopleFactory();
+        CurrentGameState = GameState.OpenDoor;
         
-
-        openDoor();
-
 	}
 
     public IEnumerator CheckForTimeout()
@@ -32,7 +46,7 @@ public class Doorstep : MonoBehaviour {
             yield return true;
         }
 
-        if(Timer.Time==CurrentPerson.MaxGreetingTime)
+        if(Timer.Time==CurrentGuest.MaxGreetingTime)
         {
 
             HandleGreetings(Greetings.None);
@@ -53,42 +67,59 @@ public class Doorstep : MonoBehaviour {
         yield return null;
     }
 
-    public void openDoor()
+    public void StartGreetTime()
     {
 
         
-        CurrentPerson = PeopleFactory.createRandom();
-        PeopleList.Add(CurrentPerson);
+        CurrentGuest = PeopleFactory.createRandom();
+        PeopleList.Add(CurrentGuest);
         Timer = new Timer();
+        AnimationController.OpenDoor();
+        StartCoroutine(ChangeGamestate(GameState.InputGreeting));
+
 
 
         StartCoroutine(CheckForTimeout());
-        StartCoroutine(Timer.StartTimer(CurrentPerson.MaxGreetingTime));
+        StartCoroutine(Timer.StartTimer(CurrentGuest.MaxGreetingTime));
 
-        Debug.Log("Hello im a " + CurrentPerson.Role.ToString());
+        Debug.Log("Hello im a " + CurrentGuest.Role.ToString());
         
     }
 
-    public People GetCurrentPerson()
+    public People GetCurrentGuest()
     {
         return PeopleList[PeopleList.Count-1];
     }
 
 	public void HandleGreetings(Greetings PlayerGreeting)
     {
-        if (PlayerGreeting == GetCurrentPerson().WantedGreeting)
+        if (PlayerGreeting == GetCurrentGuest().WantedGreeting)
         {
-            CurrentPerson.SetGreetedRight(true);
+            CurrentGuest.SetGreetedRight(true);
         }
         else
         {
-            CurrentPerson.SetGreetedRight(false);
+            CurrentGuest.SetGreetedRight(false);
         }
 
         Timer.EndTimer();
-        CurrentPerson.SetGreetingTime(Timer.Time);
+        CurrentGuest.SetGreetingTime(Timer.Time);
         StartCoroutine(LogList());
-        openDoor();
+        AnimationController.CloseDoor();
+        StartCoroutine(ChangeGamestate(GameState.OpenDoor));
+    }
+
+    public IEnumerator ChangeGamestate(GameState GameState)
+    {
+        while(true)
+            {
+                    if (AnimationController.playing == false)
+                    {
+                      CurrentGameState = GameState;
+                    }
+            yield return null;
+        }
+        
     }
 
 	void Update () {

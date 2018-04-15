@@ -5,5 +5,6 @@ namespace Enums
 {
         public enum Greetings { Shake, Bump, Hug, Kiss,None }
         public enum Roles { Boss, Wife, Friend, Mother }
+        public enum GameState {InputGreeting, OpenDoor}
 
 }
