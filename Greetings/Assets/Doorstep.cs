@@ -75,7 +75,7 @@ public class Doorstep : MonoBehaviour {
         PeopleList.Add(CurrentGuest);
         Timer = new Timer();
         AnimationController.OpenDoor();
-        StartCoroutine(ChangeGamestate(GameState.InputGreeting));
+        CurrentGameState = GameState.InputGreeting;
 
 
 
@@ -106,7 +106,7 @@ public class Doorstep : MonoBehaviour {
         CurrentGuest.SetGreetingTime(Timer.Time);
         StartCoroutine(LogList());
         AnimationController.CloseDoor();
-        StartCoroutine(ChangeGamestate(GameState.OpenDoor));
+        CurrentGameState = GameState.OpenDoor;
     }
 
     public IEnumerator ChangeGamestate(GameState GameState)

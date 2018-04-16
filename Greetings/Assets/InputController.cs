@@ -13,9 +13,9 @@ public class InputController:MonoBehaviour{
   
     void Update()
     {
-        if (Player.Doorstep.CurrentGameState == GameState.InputGreeting)
+        if (Player.Doorstep.CurrentGameState == GameState.InputGreeting && Player.Doorstep.AnimationController.playing ==false)
         {
-            
+            Debug.Log("test");
             
             ListenForTouch();
             ListenForClick();
@@ -38,7 +38,7 @@ public class InputController:MonoBehaviour{
 
     public void ListenForTouch()
     {
-        if(Input.touchCount==1 && Input.GetTouch(0).phase==TouchPhase.Began)
+        if(Input.touchCount==1 && Input.GetTouch(0).phase==TouchPhase.Ended)
         {
             InputLocked = true;
             Player.Kiss();
@@ -47,7 +47,7 @@ public class InputController:MonoBehaviour{
     public void ListenForClick()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             InputLocked = true;
             Player.Kiss();
