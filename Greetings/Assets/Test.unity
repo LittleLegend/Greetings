@@ -498,6 +498,7 @@ GameObject:
   m_Component:
   - component: {fileID: 661492881}
   - component: {fileID: 661492882}
+  - component: {fileID: 661492883}
   m_Layer: 0
   m_Name: Greeting
   m_TagString: Untagged
@@ -557,11 +558,28 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 2}
+  m_Size: {x: 2, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
+--- !u!95 &661492883
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 661492880}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 17cf5143b9dac7e49a4e06f244214705, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1207844246
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,14 +595,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1207844247
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1207844246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -941,4 +959,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Doorstep_Animator: {fileID: 2032014377}
+  Scene_Animator: {fileID: 661492883}
+  SceneRenderer: {fileID: 1207844247}
+  GreetingRenderer: {fileID: 661492882}
   playing: 0
+  sceneEnded: 0

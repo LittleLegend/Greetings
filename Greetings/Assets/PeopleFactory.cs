@@ -6,18 +6,7 @@ using UnityEngine;
 
 public class PeopleFactory {
 
-    public Boss Boss;
-    public Wife Wife;
-    public Friend Friend;
-    public Mother Mother;
-    
-    
-
-    public PeopleFactory()
-    {
-        
-    }
-
+   
     public People createRandom()
     {
         int rand = Random.Range(1,5);
@@ -45,24 +34,23 @@ public class PeopleFactory {
         return result;
         }
 
-    public Boss creatBoss()
+    public Boss createBoss()
     {
-        Boss = new Boss();
-        return Boss;
+        return new Boss();
     }
-    public Wife  creatWife()
+    public Wife  createWife()
     {
-        Wife = new Wife();
-        return Wife;
+        
+        return new Wife();
     }
-    public Friend  creatFriend()
+    public Friend  createFriend()
     {
-        Friend = new Friend();
-        return Friend;
+       
+        return new Friend();
     }
-    public Mother  creatMother()
+    public Mother  createMother()
     {
-        Mother = new Mother();
-        return Mother;
+        return new Mother();
     }
+
 }

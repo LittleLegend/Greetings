@@ -15,26 +15,31 @@ public class Player: MonoBehaviour {
     public void Shake()
     {
         
-        Doorstep.HandleGreetings(Greetings.Shake);
+        Doorstep.HandleGreetings(Doorstep.GreetingFactory.createShake());
     }
     public void Hug()
     {
-        Doorstep.HandleGreetings(Greetings.Hug);
+        Doorstep.HandleGreetings(Doorstep.GreetingFactory.createHug());
     }
 
     public void Kiss()
     {
-        Doorstep.HandleGreetings(Greetings.Kiss);
+        Doorstep.HandleGreetings(Doorstep.GreetingFactory.createKiss());
     }
 
     public void Bump()
     {
-        Doorstep.HandleGreetings(Greetings.Bump);
+        Doorstep.HandleGreetings(Doorstep.GreetingFactory.createBump());
     }
-
+    
     public void OpenDoor()
     {
         Doorstep.StartGreetTime();
+    }
+
+    public void CloseDoor()
+    {
+        Doorstep.EndGreetTime();
     }
 
 }

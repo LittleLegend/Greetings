@@ -8,8 +8,7 @@ public class Friend : People
         public Friend()
         {
         MaxGreetingTime = 5;
-        WantedGreeting = Greetings.Bump;
-        Role = Roles.Friend;
+        Type = Roles.Friend;
     }
 
     }

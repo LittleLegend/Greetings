@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 59641331a0fb74f40949bfe506e3ccfc
-timeCreated: 1523722321
+guid: 4c1f1bd717a7a2d40ac63b2ef1608662
+timeCreated: 1524343260
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Kiss_0
-    21300002: Kiss_1
-    21300004: Kiss_2
+    21300000: Wife_Kiss_0
+    21300002: Wife_Kiss_1
+    21300004: Wife_Kiss_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -25,7 +25,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -37,9 +37,9 @@ TextureImporter:
     filterMode: 0
     aniso: -1
     mipBias: -1
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -103,7 +103,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kiss_0
+      name: Wife_Kiss_0
       rect:
         serializedVersion: 2
         x: 0
@@ -117,7 +117,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Kiss_1
+      name: Wife_Kiss_1
       rect:
         serializedVersion: 2
         x: 64
@@ -131,7 +131,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Kiss_2
+      name: Wife_Kiss_2
       rect:
         serializedVersion: 2
         x: 128

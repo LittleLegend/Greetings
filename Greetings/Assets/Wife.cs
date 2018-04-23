@@ -9,8 +9,7 @@ public class Wife : People
         public Wife()
         {
         MaxGreetingTime = 5;
-        WantedGreeting = Greetings.Kiss;
-        Role = Roles.Wife;
+        Type = Roles.Wife;
     }
 
     }

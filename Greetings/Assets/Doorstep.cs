@@ -29,10 +29,15 @@ public class Doorstep : MonoBehaviour {
     [SerializeField]
     public GameState CurrentGameState;
 
+    [SerializeField]
+    public GreetingFactory GreetingFactory;
+
+ 
     void Start () {
 
         PeopleList = new List<People>();
         PeopleFactory = new PeopleFactory();
+        GreetingFactory = new GreetingFactory();
         CurrentGameState = GameState.OpenDoor;
         
 	}
@@ -49,7 +54,7 @@ public class Doorstep : MonoBehaviour {
         if(Timer.Time==CurrentGuest.MaxGreetingTime)
         {
 
-            HandleGreetings(Greetings.None);
+            HandleGreetings(null);
         }
 
 
@@ -69,33 +74,44 @@ public class Doorstep : MonoBehaviour {
 
     public void StartGreetTime()
     {
-
-        
-        CurrentGuest = PeopleFactory.createRandom();
+        CurrentGuest = PeopleFactory.createWife();
+        CurrentGuest.WantedGreeting = GreetingFactory.createGreeting(CurrentGuest.Type);
         PeopleList.Add(CurrentGuest);
+
         Timer = new Timer();
         AnimationController.OpenDoor();
         CurrentGameState = GameState.InputGreeting;
 
-
-
+        
         StartCoroutine(CheckForTimeout());
         StartCoroutine(Timer.StartTimer(CurrentGuest.MaxGreetingTime));
 
-        Debug.Log("Hello im a " + CurrentGuest.Role.ToString());
+        Debug.Log("Hello im a " + CurrentGuest.Type.ToString());
         
     }
 
-    public People GetCurrentGuest()
+    public void EndGreetTime()
     {
-        return PeopleList[PeopleList.Count-1];
-    }
+        AnimationController.CloseDoor();
+        AnimationController.EnableScene(false);
+        AnimationController.PlayScene(Scenes.Still_0);
+        CurrentGameState = GameState.OpenDoor;
 
-	public void HandleGreetings(Greetings PlayerGreeting)
+    }
+    
+
+	public void HandleGreetings(Greeting PlayerGreeting)
     {
-        if (PlayerGreeting == GetCurrentGuest().WantedGreeting)
+        if (PlayerGreeting != null)
         {
-            CurrentGuest.SetGreetedRight(true);
+            if (PlayerGreeting.Type == CurrentGuest.WantedGreeting.Type)
+            {
+                CurrentGuest.SetGreetedRight(true);
+            }
+            else
+            {
+                CurrentGuest.SetGreetedRight(false);
+            }
         }
         else
         {
@@ -105,21 +121,11 @@ public class Doorstep : MonoBehaviour {
         Timer.EndTimer();
         CurrentGuest.SetGreetingTime(Timer.Time);
         StartCoroutine(LogList());
-        AnimationController.CloseDoor();
-        CurrentGameState = GameState.OpenDoor;
-    }
-
-    public IEnumerator ChangeGamestate(GameState GameState)
-    {
-        while(true)
-            {
-                    if (AnimationController.playing == false)
-                    {
-                      CurrentGameState = GameState;
-                    }
-            yield return null;
-        }
+        CurrentGameState = GameState.WatchScene;
+        AnimationController.EnableScene(true);
+        AnimationController.PlayScene(Scenes.Wife_Kiss_1);
         
+      
     }
 
 	void Update () {

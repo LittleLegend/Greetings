@@ -8,12 +8,13 @@ using Enums;
 
         
         
-        public Greetings WantedGreeting;
-        public Roles Role;
+        public Greeting WantedGreeting;
+        public Roles Type;
         public bool Greeted=false;
         public bool GreetedRight;
         public float GreetingTime;
         public float MaxGreetingTime;
+        
 
 
 
