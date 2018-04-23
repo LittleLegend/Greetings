@@ -8,7 +8,7 @@ using Enums;
 
         
         
-        public Greeting WantedGreeting;
+        public Greetings WantedGreeting;
         public Roles Type;
         public bool Greeted=false;
         public bool GreetedRight;

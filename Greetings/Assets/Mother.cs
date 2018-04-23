@@ -10,5 +10,6 @@ public class Mother : People
         {
         MaxGreetingTime = 5;
         Type = Roles.Mother;
+        WantedGreeting = Greetings.Hug;
     }
     }

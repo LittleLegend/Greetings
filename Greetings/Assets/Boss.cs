@@ -10,7 +10,7 @@ using Enums;
         {
         MaxGreetingTime = 5;
         Type = Roles.Boss;
-        
-        }
+        WantedGreeting = Greetings.Shake;
+    }
 
     }

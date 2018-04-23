@@ -11,6 +11,18 @@ public class Player: MonoBehaviour {
     [SerializeField]
     public InputController InputController;
 
+    public ICommand Greet;
+   
+    
+    public void setGreet(IGesture Gesture)
+    {
+        Greet = new GreetCommand(Gesture);
+    }
+
+    public void greet()
+    {
+        Greet.execute();
+    }
 
     public void Shake()
     {

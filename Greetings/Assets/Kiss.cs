@@ -4,30 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 
-public class Kiss : Greeting{
+public class Kiss : IGesture{
 
-
-    public Kiss()
-    {
-        Type = Greetings.Kiss;
-
-    }
     
-    public override bool isGreetingDevice()
+    public bool checkInput()
     {
-        if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
-        {
-            return true;
-        }
-        else { return false; }
+        throw new NotImplementedException();
     }
 
-    public override bool isGreetingEditor()
+    public Greetings greet()
     {
-        if (Input.GetMouseButtonUp(0))
-        {
-            return true;
-        }
-        else { return false; }
+        return Greetings.Kiss;
     }
 }

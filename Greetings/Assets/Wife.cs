@@ -10,6 +10,7 @@ public class Wife : People
         {
         MaxGreetingTime = 5;
         Type = Roles.Wife;
+        WantedGreeting = Greetings.Kiss;
     }
 
     }

@@ -100,11 +100,10 @@ public class Doorstep : MonoBehaviour {
     }
     
 
-	public void HandleGreetings(Greeting PlayerGreeting)
+	public void HandleGreetings(Greetings PlayerGreeting)
     {
-        if (PlayerGreeting != null)
-        {
-            if (PlayerGreeting.Type == CurrentGuest.WantedGreeting.Type)
+        
+            if (PlayerGreeting == CurrentGuest.WantedGreeting)
             {
                 CurrentGuest.SetGreetedRight(true);
             }
@@ -112,11 +111,7 @@ public class Doorstep : MonoBehaviour {
             {
                 CurrentGuest.SetGreetedRight(false);
             }
-        }
-        else
-        {
-            CurrentGuest.SetGreetedRight(false);
-        }
+        
 
         Timer.EndTimer();
         CurrentGuest.SetGreetingTime(Timer.Time);
