@@ -7,10 +7,10 @@ using System;
 public  class GreetCommand:ICommand
 {
 
-    public IGesture Gesture;
+    public Gesture Gesture;
 
     
-    public GreetCommand(IGesture Gesture)
+    public GreetCommand(Gesture Gesture)
     {
         this.Gesture = Gesture;
     }

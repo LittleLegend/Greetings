@@ -4,16 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 
-public class Hug : IGesture {
+public class Hug : Gesture {
 
-    
-    public bool checkInput()
+    public Hug(Doorstep Doorstep)
     {
-        throw new NotImplementedException();
+        this.Doorstep = Doorstep;
     }
 
-    public Greetings greet()
+    public override void greet()
     {
-        return Greetings.Hug;
+        Doorstep.HandleGreetings(Greetings.Hug);
+    }
+
+    public override void checkInput()
+    {
+        throw new NotImplementedException();
     }
 }

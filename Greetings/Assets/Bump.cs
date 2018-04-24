@@ -4,16 +4,20 @@ using UnityEngine;
 using Enums;
 using System;
 
-public class Bump : IGesture
+public class Bump : Gesture
 {
-    
-    public bool checkInput()
+    public Bump(Doorstep Doorstep)
     {
-        throw new NotImplementedException();
+        this.Doorstep = Doorstep;
     }
 
-    public Greetings greet()
+    public override void greet()
     {
-        return Greetings.Bump;
+        Doorstep.HandleGreetings(Greetings.Bump);
+    }
+
+    public override void checkInput()
+    {
+        throw new NotImplementedException();
     }
 }

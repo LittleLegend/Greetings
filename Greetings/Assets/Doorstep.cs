@@ -5,39 +5,33 @@ using Enums;
 
 public class Doorstep : MonoBehaviour {
 
-    [SerializeField]
+    
     public Player Player;
-
-    [SerializeField]
+    
     public PeopleFactory PeopleFactory;
-
-    [SerializeField]
+    
     public List<People> PeopleList;
-
-    [SerializeField]
+    
     public People CurrentGuest;
-
-    [SerializeField]
+    
     public Animator Doorstep_Animator;
     
-    [SerializeField]
     public AnimationController AnimationController;
-    
-    [SerializeField]
+
+    public InputController InputController;
+
     public Timer Timer;
-
-    [SerializeField]
+    
     public GameState CurrentGameState;
-
-    [SerializeField]
-    public GreetingFactory GreetingFactory;
+    
+    public GestureFactory GreetingFactory;
 
  
     void Start () {
 
         PeopleList = new List<People>();
         PeopleFactory = new PeopleFactory();
-        GreetingFactory = new GreetingFactory();
+        GreetingFactory = new GestureFactory(this);
         CurrentGameState = GameState.OpenDoor;
         
 	}

@@ -7,13 +7,22 @@ public class InputController:MonoBehaviour{
 
     public Player Player;
     public bool InputLocked;
+    public List<Gesture> GestureList;
+
+    public ICommand CheckInputCommand;
     
-    
-  
     void Update()
     {
         InputGreeting();
         WatchScene();
+    }
+
+    
+    public void checkInput(Gesture Gesture)
+    {
+        CheckInputCommand = new CheckInputCommand(Gesture);
+        CheckInputCommand.execute();
+
     }
 
     public void InputGreeting()

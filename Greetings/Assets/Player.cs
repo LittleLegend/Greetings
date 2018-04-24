@@ -11,37 +11,17 @@ public class Player: MonoBehaviour {
     [SerializeField]
     public InputController InputController;
 
-    public ICommand Greet;
+    public ICommand GreetCommand;
    
     
-    public void setGreet(IGesture Gesture)
+    public void setGreetCommand(Gesture Gesture)
     {
-        Greet = new GreetCommand(Gesture);
+        GreetCommand = new GreetCommand(Gesture);
     }
 
     public void greet()
     {
-        Greet.execute();
-    }
-
-    public void Shake()
-    {
-        
-        Doorstep.HandleGreetings(Doorstep.GreetingFactory.createShake());
-    }
-    public void Hug()
-    {
-        Doorstep.HandleGreetings(Doorstep.GreetingFactory.createHug());
-    }
-
-    public void Kiss()
-    {
-        Doorstep.HandleGreetings(Doorstep.GreetingFactory.createKiss());
-    }
-
-    public void Bump()
-    {
-        Doorstep.HandleGreetings(Doorstep.GreetingFactory.createBump());
+        GreetCommand.execute();
     }
     
     public void OpenDoor()

@@ -3,42 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 
-public class GreetingFactory{
+public class GestureFactory{
 
-   
-    
-    public Greeting createGreeting(Roles CurrentGuest)
+    public Doorstep Doorstep;
+    public List<Gesture> GestureList;
+
+   public GestureFactory(Doorstep Doorstep)
     {
-        Greeting result = null;
+        this.Doorstep = Doorstep; 
+    }
 
-        switch (CurrentGuest)
-        {
-            case Roles.Wife:
-                result = new Kiss();
-                break;
+    public List<Gesture> createGestureList()
+    {
+        GestureList = new List<Gesture>();
+        GestureList.Add(createBump());
+        GestureList.Add(createShake());
+        GestureList.Add(createKiss());
+        GestureList.Add(createHug());
 
-        }
-
-        return result;
+        return GestureList;
     }
 
     public Kiss createKiss()
     {
-        return new Kiss();
+        return new Kiss(Doorstep);
     }
     public Bump createBump()
     {
 
-        return new Bump();
+        return new Bump(Doorstep);
     }
     public Shake createShake()
     {
 
-        return new Shake();
+        return new Shake(Doorstep);
     }
     public Hug createHug()
     {
-        return new Hug();
+        return new Hug(Doorstep);
     }
 
 }

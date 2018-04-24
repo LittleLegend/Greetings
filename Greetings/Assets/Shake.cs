@@ -4,17 +4,20 @@ using UnityEngine;
 using Enums;
 using System;
 
-public class Shake : IGesture {
+public class Shake : Gesture {
 
-
-   
-    public bool checkInput()
+    public Shake(Doorstep Doorstep)
     {
-        throw new NotImplementedException();
+        this.Doorstep = Doorstep;
     }
 
-    public Greetings greet()
+    public override void greet()
     {
-        return Greetings.Shake;
+        Doorstep.HandleGreetings(Greetings.Shake);
+    }
+
+    public override void checkInput()
+    {
+        throw new NotImplementedException();
     }
 }

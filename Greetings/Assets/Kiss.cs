@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 
-public class Kiss : IGesture{
+public class Kiss : Gesture{
 
+    public Kiss(Doorstep Doorstep)
+    {
+        this.Doorstep = Doorstep;
+    }
     
-    public bool checkInput()
+    public override void greet()
+    {
+        Doorstep.HandleGreetings(Greetings.Kiss);
+    }
+
+    public override void checkInput()
     {
         throw new NotImplementedException();
     }
-
-    public Greetings greet()
-    {
-        return Greetings.Kiss;
-    }
 }
+
+
