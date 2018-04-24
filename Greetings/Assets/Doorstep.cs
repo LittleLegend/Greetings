@@ -24,14 +24,20 @@ public class Doorstep : MonoBehaviour {
     
     public GameState CurrentGameState;
     
-    public GestureFactory GreetingFactory;
+    public GestureFactory GestureFactory;
 
  
     void Start () {
 
         PeopleList = new List<People>();
         PeopleFactory = new PeopleFactory();
-        GreetingFactory = new GestureFactory(this);
+        GestureFactory = new GestureFactory(this,Player);
+
+        InputController.GestureList = GestureFactory.createGestureList();
+
+        Player.resetGreetCommand();
+        
+
         CurrentGameState = GameState.OpenDoor;
         
 	}
@@ -48,7 +54,7 @@ public class Doorstep : MonoBehaviour {
         if(Timer.Time==CurrentGuest.MaxGreetingTime)
         {
 
-            HandleGreetings(null);
+            HandleGreetings(Greetings.None);
         }
 
 
@@ -68,14 +74,17 @@ public class Doorstep : MonoBehaviour {
 
     public void StartGreetTime()
     {
+        CurrentGameState = GameState.InputGreeting;
+
         CurrentGuest = PeopleFactory.createWife();
-        CurrentGuest.WantedGreeting = GreetingFactory.createGreeting(CurrentGuest.Type);
         PeopleList.Add(CurrentGuest);
 
         Timer = new Timer();
-        AnimationController.OpenDoor();
-        CurrentGameState = GameState.InputGreeting;
 
+        AnimationController.OpenDoor();
+        InputController.startInputGreeting();
+
+        
         
         StartCoroutine(CheckForTimeout());
         StartCoroutine(Timer.StartTimer(CurrentGuest.MaxGreetingTime));
@@ -86,6 +95,7 @@ public class Doorstep : MonoBehaviour {
 
     public void EndGreetTime()
     {
+        
         AnimationController.CloseDoor();
         AnimationController.EnableScene(false);
         AnimationController.PlayScene(Scenes.Still_0);
@@ -108,9 +118,15 @@ public class Doorstep : MonoBehaviour {
         
 
         Timer.EndTimer();
+
         CurrentGuest.SetGreetingTime(Timer.Time);
+
         StartCoroutine(LogList());
+
         CurrentGameState = GameState.WatchScene;
+        
+        InputController.startWatchScene();
+
         AnimationController.EnableScene(true);
         AnimationController.PlayScene(Scenes.Wife_Kiss_1);
         

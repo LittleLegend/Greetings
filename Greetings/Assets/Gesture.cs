@@ -8,6 +8,8 @@ public abstract class Gesture{
 
     public Doorstep Doorstep;
 
+    public Player Player;
+    
     public abstract void greet();
 
     public abstract void checkInput();

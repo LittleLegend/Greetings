@@ -6,9 +6,10 @@ using System;
 
 public class Bump : Gesture
 {
-    public Bump(Doorstep Doorstep)
+    public Bump(Doorstep Doorstep,Player Player)
     {
         this.Doorstep = Doorstep;
+        this.Player = Player;
     }
 
     public override void greet()
@@ -18,6 +19,6 @@ public class Bump : Gesture
 
     public override void checkInput()
     {
-        throw new NotImplementedException();
+        
     }
 }

@@ -3,58 +3,77 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 
-public class InputController:MonoBehaviour{
+public class InputController: MonoBehaviour{
 
     public Player Player;
     public bool InputLocked;
-    public List<Gesture> GestureList;
 
+    public List<Gesture> GestureList;
     public ICommand CheckInputCommand;
-    
-    void Update()
+
+    public void startInputGreeting()
     {
-        InputGreeting();
-        WatchScene();
+        StartCoroutine(checkGreeting());
+        StartCoroutine(releaseGreeting());
+        
     }
 
-    
+    public void startWatchScene()
+    {
+        StartCoroutine(watchScene());
+    }
+
     public void checkInput(Gesture Gesture)
     {
         CheckInputCommand = new CheckInputCommand(Gesture);
         CheckInputCommand.execute();
-
+        
     }
 
-    public void InputGreeting()
+    public IEnumerator checkGreeting()
     {
-        if (Player.Doorstep.CurrentGameState == GameState.InputGreeting && Player.Doorstep.AnimationController.playing == false)
+        while (Player.Doorstep.CurrentGameState == GameState.InputGreeting)
         {
-
-            if(Player.Doorstep.GreetingFactory.createKiss().isGreeting())
+            if ( Player.Doorstep.AnimationController.playing == false)
             {
-                Player.Kiss();
+                
+                for(int i =0; i <GestureList.Count;i++)
+                {
+                    checkInput(GestureList[i]);
+                }
             }
-
-
-
-        }
-    }
-
-    public void WatchScene()
-    {
-        if (Player.Doorstep.CurrentGameState == GameState.WatchScene && Player.Doorstep.AnimationController.sceneEnded == true)
-        {
-            if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Ended)
-            {
-                Player.CloseDoor();
-            }
-
-            if (Input.GetMouseButtonUp(0))
-            {
-                Player.CloseDoor();
-            }
+            yield return null;
         }
         
+    }
+
+    public IEnumerator releaseGreeting()
+    {
+        while (Player.Doorstep.CurrentGameState == GameState.InputGreeting)
+        {
+            if (Player.Doorstep.AnimationController.playing == false &&
+                Input.GetMouseButtonUp(0))
+            {
+                Player.greet();
+            }
+            yield return null;
+        }
+        
+    }
+
+    public IEnumerator watchScene()
+    {
+        while (Player.Doorstep.CurrentGameState == GameState.WatchScene)
+        {
+            if (Player.Doorstep.AnimationController.sceneEnded == true)
+            {
+                if (Input.GetMouseButtonUp(0))
+                {
+                    Player.CloseDoor();
+                }
+            }
+            yield return null;
+        }
     }
     
     public void ButtonOpenDoor()
@@ -62,6 +81,7 @@ public class InputController:MonoBehaviour{
 
         if (Player.Doorstep.CurrentGameState == GameState.OpenDoor && Player.Doorstep.AnimationController.playing == false)
         {
+            
             Player.OpenDoor();
         }
 

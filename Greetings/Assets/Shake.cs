@@ -6,9 +6,10 @@ using System;
 
 public class Shake : Gesture {
 
-    public Shake(Doorstep Doorstep)
+    public Shake(Doorstep Doorstep, Player Player)
     {
         this.Doorstep = Doorstep;
+        this.Player = Player;
     }
 
     public override void greet()
@@ -18,6 +19,6 @@ public class Shake : Gesture {
 
     public override void checkInput()
     {
-        throw new NotImplementedException();
+       
     }
 }

@@ -6,9 +6,10 @@ using Enums;
 
 public class Kiss : Gesture{
 
-    public Kiss(Doorstep Doorstep)
+    public Kiss(Doorstep Doorstep, Player Player)
     {
         this.Doorstep = Doorstep;
+        this.Player = Player;
     }
     
     public override void greet()
@@ -18,7 +19,10 @@ public class Kiss : Gesture{
 
     public override void checkInput()
     {
-        throw new NotImplementedException();
+        if( Input.GetMouseButton(0))
+        {
+            Player.setGreetCommand(this);
+        }
     }
 }
 

@@ -7,21 +7,24 @@ public class Player: MonoBehaviour {
 
     [SerializeField]
     public Doorstep Doorstep;
-
-    [SerializeField]
-    public InputController InputController;
-
-    public ICommand GreetCommand;
-   
     
+    public ICommand GreetCommand;
+
     public void setGreetCommand(Gesture Gesture)
     {
         GreetCommand = new GreetCommand(Gesture);
+        
     }
 
+    public void resetGreetCommand()
+    {
+        GreetCommand = new GreetCommand(new None(Doorstep,this));
+    }
+    
     public void greet()
     {
         GreetCommand.execute();
+        resetGreetCommand();
     }
     
     public void OpenDoor()

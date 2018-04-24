@@ -143,7 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Doorstep: {fileID: 2032014374}
-  InputController: {fileID: 347105375}
 --- !u!4 &347105373
 Transform:
   m_ObjectHideFlags: 0
@@ -851,6 +850,7 @@ GameObject:
   - component: {fileID: 2032014376}
   - component: {fileID: 2032014377}
   - component: {fileID: 2032014378}
+  - component: {fileID: 2032014379}
   m_Layer: 0
   m_Name: Doorstep
   m_TagString: Untagged
@@ -872,6 +872,7 @@ MonoBehaviour:
   Player: {fileID: 347105372}
   Doorstep_Animator: {fileID: 2032014377}
   AnimationController: {fileID: 2032014378}
+  InputController: {fileID: 2032014379}
   CurrentGameState: 0
 --- !u!4 &2032014375
 Transform:
@@ -964,3 +965,16 @@ MonoBehaviour:
   GreetingRenderer: {fileID: 661492882}
   playing: 0
   sceneEnded: 0
+--- !u!114 &2032014379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2032014373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf020c4ba1892846a0e26bedd52a6c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 347105372}
+  InputLocked: 0

@@ -6,9 +6,10 @@ using Enums;
 
 public class Hug : Gesture {
 
-    public Hug(Doorstep Doorstep)
+    public Hug(Doorstep Doorstep, Player Player)
     {
         this.Doorstep = Doorstep;
+        this.Player = Player;
     }
 
     public override void greet()
@@ -18,6 +19,6 @@ public class Hug : Gesture {
 
     public override void checkInput()
     {
-        throw new NotImplementedException();
+        
     }
 }
