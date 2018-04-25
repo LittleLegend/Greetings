@@ -21,4 +21,9 @@ public class Hug : Gesture {
     {
         
     }
+
+    public override void undoGreet()
+    {
+        throw new NotImplementedException();
+    }
 }

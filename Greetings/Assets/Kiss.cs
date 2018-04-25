@@ -24,6 +24,11 @@ public class Kiss : Gesture{
             Player.setGreetCommand(this);
         }
     }
+
+    public override void undoGreet()
+    {
+        Doorstep.PeopleList.RemoveAt(Doorstep.PeopleList.Count - 1);
+    }
 }
 
 

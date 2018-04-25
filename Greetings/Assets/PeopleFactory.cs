@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Enums;
 
 
 public class PeopleFactory {
@@ -34,23 +34,31 @@ public class PeopleFactory {
         return result;
         }
 
-    public Boss createBoss()
+    public People createPeople(Roles Role )
     {
-        return new Boss();
-    }
-    public Wife  createWife()
-    {
-        
-        return new Wife();
-    }
-    public Friend  createFriend()
-    {
-       
-        return new Friend();
-    }
-    public Mother  createMother()
-    {
-        return new Mother();
+        People result = null;
+
+        switch (Role)
+        {
+            case Roles.Boss:
+                result = new Boss();
+                break;
+
+            case Roles.Wife:
+                result = new Wife();
+                break;
+
+            case Roles.Friend:
+                result = new Friend();
+                break;
+
+            case Roles.Mother:
+                result = new Mother();
+                break;
+        }
+
+        return result;
     }
 
+    
 }

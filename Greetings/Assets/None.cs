@@ -20,4 +20,9 @@ public class None : Gesture {
     {
         
     }
+
+    public override void undoGreet()
+    {
+        Doorstep.PeopleList.RemoveAt(Doorstep.PeopleList.Count - 1);
+    }
 }

@@ -76,7 +76,7 @@ public class InputController: MonoBehaviour{
         }
     }
     
-    public void ButtonOpenDoor()
+    public void buttonOpenDoor()
     {
 
         if (Player.Doorstep.CurrentGameState == GameState.OpenDoor && Player.Doorstep.AnimationController.playing == false)
@@ -86,5 +86,16 @@ public class InputController: MonoBehaviour{
         }
 
     }
-    
+
+    public void buttonUndo()
+    {
+
+        if (Player.Doorstep.CurrentGameState == GameState.OpenDoor && Player.Doorstep.AnimationController.playing == false)
+        {
+
+            Player.undoGreet();
+        }
+
+    }
+
 }

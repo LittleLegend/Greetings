@@ -21,4 +21,9 @@ public class Shake : Gesture {
     {
        
     }
+
+    public override void undoGreet()
+    {
+        throw new NotImplementedException();
+    }
 }

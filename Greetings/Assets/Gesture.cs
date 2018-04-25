@@ -14,5 +14,6 @@ public abstract class Gesture{
 
     public abstract void checkInput();
 
-
+    public abstract void undoGreet();
+    
 }

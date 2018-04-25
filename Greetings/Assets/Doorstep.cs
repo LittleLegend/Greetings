@@ -76,7 +76,7 @@ public class Doorstep : MonoBehaviour {
     {
         CurrentGameState = GameState.InputGreeting;
 
-        CurrentGuest = PeopleFactory.createWife();
+        CurrentGuest = PeopleFactory.createPeople(Roles.Wife);
         PeopleList.Add(CurrentGuest);
 
         Timer = new Timer();

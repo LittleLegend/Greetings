@@ -22,6 +22,6 @@ public  class GreetCommand:ICommand
  
     public void undo()
     {
-        throw new NotImplementedException();
+        Gesture.undoGreet();
     }
 }

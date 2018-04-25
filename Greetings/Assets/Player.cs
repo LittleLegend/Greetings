@@ -13,14 +13,20 @@ public class Player: MonoBehaviour {
     public void setGreetCommand(Gesture Gesture)
     {
         GreetCommand = new GreetCommand(Gesture);
-        
+       
     }
 
     public void resetGreetCommand()
     {
         GreetCommand = new GreetCommand(new None(Doorstep,this));
     }
-    
+
+    public void undoGreet()
+    {
+        GreetCommand.undo();
+        resetGreetCommand();
+    }
+
     public void greet()
     {
         GreetCommand.execute();
