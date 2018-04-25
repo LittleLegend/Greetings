@@ -24,6 +24,6 @@ public class Shake : Gesture {
 
     public override void undoGreet()
     {
-        throw new NotImplementedException();
+        Doorstep.PeopleList.RemoveAt(Doorstep.PeopleList.Count - 1);
     }
 }
