@@ -424,6 +424,7 @@ GameObject:
   m_Component:
   - component: {fileID: 595004418}
   - component: {fileID: 595004417}
+  - component: {fileID: 595004419}
   m_Layer: 0
   m_Name: Guest
   m_TagString: Untagged
@@ -465,7 +466,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: ca841eb113779fe409990c4d4c39a81d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61779fe008a76674ebbe44ede176d029, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -488,6 +489,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &595004419
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 595004416}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ecf204bbe38f883479ff40ccd43791be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &605509370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,6 +1071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Doorstep_Animator: {fileID: 2032014377}
+  Guest_Animator: {fileID: 595004419}
   Scene_Animator: {fileID: 661492883}
   SceneRenderer: {fileID: 1207844247}
   GreetingRenderer: {fileID: 661492882}

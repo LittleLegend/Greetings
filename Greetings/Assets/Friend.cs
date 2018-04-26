@@ -12,4 +12,6 @@ public class Friend : People
         WantedGreeting = Greetings.Bump;
     }
 
+    
+
     }

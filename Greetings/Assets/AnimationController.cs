@@ -6,6 +6,7 @@ using Enums;
 public class AnimationController : MonoBehaviour {
 
     public Animator Doorstep_Animator;
+    public Animator Guest_Animator;
     public Animator Scene_Animator;
     public SpriteRenderer SceneRenderer;
     public SpriteRenderer GreetingRenderer;
@@ -14,12 +15,33 @@ public class AnimationController : MonoBehaviour {
 
     void Update()
     {
-        
             SetSceneEnded();
             SetPlaying();
         
-        
     }
+
+    public void SetGuest(Roles Role)
+    {
+        switch (Role)
+        {
+            case Roles.Wife:
+                Guest_Animator.SetInteger("Guest", 1);
+                break;
+
+            case Roles.Friend:
+                Guest_Animator.SetInteger("Guest", 2);
+                break;
+
+            case Roles.Boss:
+                Guest_Animator.SetInteger("Guest", 3);
+                break;
+                
+            case Roles.Mother:
+                Guest_Animator.SetInteger("Guest", 4);
+                break;
+        }
+    }
+
     public void OpenDoor()
     {
         playing = true;
@@ -63,15 +85,17 @@ public class AnimationController : MonoBehaviour {
 
     public void  SetPlaying()
     {
-        if (Doorstep_Animator.GetCurrentAnimatorStateInfo(0).IsName("Door_Open_Still")
-           || Doorstep_Animator.GetCurrentAnimatorStateInfo(0).IsName("Door_Close_Still")
-           )
-        {
-            playing = false;
+            if (Doorstep_Animator.GetCurrentAnimatorStateInfo(0).IsName("Door_Open_Still")
+               || Doorstep_Animator.GetCurrentAnimatorStateInfo(0).IsName("Door_Close_Still")
+               )
+            {
+                playing = false;
 
-        }
-        else { playing = true; }
+            }
+            else { playing = true; }
 
+            
+        
     }
 
     public void SetSceneEnded()
@@ -80,7 +104,8 @@ public class AnimationController : MonoBehaviour {
             if ( Scene_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
                 sceneEnded = true;
-            }
+                playing = true;
+        }
             else { sceneEnded = false; }
         
     }
