@@ -80,8 +80,6 @@ public class Doorstep : MonoBehaviour {
         
         AnimationController.OpenDoor();
         InputController.startInputGreeting();
-
-        
         
         StartCoroutine(CheckForTimeout());
         StartCoroutine(Timer.StartTimer(CurrentGuest.MaxGreetingTime));
@@ -95,7 +93,7 @@ public class Doorstep : MonoBehaviour {
         
         AnimationController.CloseDoor();
         AnimationController.EnableScene(false);
-        AnimationController.PlayScene(Scenes.Still_0);
+        AnimationController.ResetScene();
         CurrentGameState = GameState.OpenDoor;
         StartCoroutine(changeGuest(0.5f));
 
@@ -116,9 +114,6 @@ public class Doorstep : MonoBehaviour {
                 break;
             }
         }
-        
-        
-
     }
 
 	public void HandleGreetings(Greetings PlayerGreeting)
@@ -145,7 +140,7 @@ public class Doorstep : MonoBehaviour {
         InputController.startWatchScene();
 
         AnimationController.EnableScene(true);
-        AnimationController.PlayScene(Scenes.Wife_Kiss_1);
+        AnimationController.PlaySceneRole(CurrentGuest.Type,PlayerGreeting);
         
       
     }
