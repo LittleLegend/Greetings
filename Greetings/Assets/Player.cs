@@ -13,7 +13,7 @@ public class Player: MonoBehaviour {
     public void setGreetCommand(Gesture Gesture)
     {
         GreetCommand = new GreetCommand(Gesture);
-       
+        
     }
 
     public void resetGreetCommand()

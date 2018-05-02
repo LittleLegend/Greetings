@@ -7,7 +7,9 @@ public class Doorstep : MonoBehaviour {
 
     
     public Player Player;
-    
+
+    public Camera Camera;
+
     public PeopleFactory PeopleFactory;
     
     public List<People> PeopleList;
@@ -118,7 +120,7 @@ public class Doorstep : MonoBehaviour {
 
 	public void HandleGreetings(Greetings PlayerGreeting)
     {
-        
+        Debug.Log(PlayerGreeting);
             if (PlayerGreeting == CurrentGuest.WantedGreeting)
             {
                 CurrentGuest.SetGreetedRight(true);

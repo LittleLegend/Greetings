@@ -37,7 +37,7 @@ public class InputController: MonoBehaviour{
             if ( Player.Doorstep.AnimationController.playing == false)
             {
                 
-                for(int i =0; i <GestureList.Count;i++)
+                for (int i =0; i <GestureList.Count;i++)
                 {
                     checkInput(GestureList[i]);
                 }

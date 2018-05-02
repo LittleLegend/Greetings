@@ -20,6 +20,16 @@ public class Hug : Gesture {
     public override void checkInput()
     {
         
+
+        Vector3 screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+        screenPoint = Doorstep.Camera.ScreenToViewportPoint(screenPoint);
+
+        if (Input.GetMouseButton(0)
+             && screenPoint.x >= 0
+             && screenPoint.y >= 0)
+        {
+            Player.setGreetCommand(this);
+        }
     }
 
     public override void undoGreet()
