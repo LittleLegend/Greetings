@@ -12,6 +12,7 @@ public class AnimationController : MonoBehaviour {
     public SpriteRenderer GreetingRenderer;
     public bool playing;
     public bool sceneEnded;
+    public bool guestChanged;
 
     void Update()
     {
@@ -98,7 +99,6 @@ public class AnimationController : MonoBehaviour {
 
         }
     }
-
     public void PlaySceneWife(Greetings PlayerGreeting)
     {
         switch (PlayerGreeting)
@@ -111,19 +111,19 @@ public class AnimationController : MonoBehaviour {
 
             case Greetings.Bump:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 2);
 
                 break;
 
             case Greetings.Hug:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 2);
 
                 break;
 
             case Greetings.Shake:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 2);
 
                 break;
 
@@ -142,68 +142,31 @@ public class AnimationController : MonoBehaviour {
         {
             case Greetings.Kiss:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 4);
 
                 break;
 
             case Greetings.Bump:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 3);
 
                 break;
 
             case Greetings.Hug:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 4);
 
                 break;
 
             case Greetings.Shake:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 4);
 
                 break;
 
             case Greetings.None:
 
-                Scene_Animator.SetInteger("Scene", 2);
-
-                break;
-
-        }
-
-    }
-    public void PlaySceneBoss(Greetings PlayerGreeting)
-    {
-        switch (PlayerGreeting)
-        {
-            case Greetings.Kiss:
-
-                Scene_Animator.SetInteger("Scene", 1);
-
-                break;
-
-            case Greetings.Bump:
-
-                Scene_Animator.SetInteger("Scene", 1);
-
-                break;
-
-            case Greetings.Hug:
-
-                Scene_Animator.SetInteger("Scene", 1);
-
-                break;
-
-            case Greetings.Shake:
-
-                Scene_Animator.SetInteger("Scene", 1);
-
-                break;
-
-            case Greetings.None:
-
-                Scene_Animator.SetInteger("Scene", 2);
+                Scene_Animator.SetInteger("Scene", 4);
 
                 break;
 
@@ -216,31 +179,68 @@ public class AnimationController : MonoBehaviour {
         {
             case Greetings.Kiss:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 6);
 
                 break;
 
             case Greetings.Bump:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 6);
 
                 break;
 
             case Greetings.Hug:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 5);
 
                 break;
 
             case Greetings.Shake:
 
-                Scene_Animator.SetInteger("Scene", 1);
+                Scene_Animator.SetInteger("Scene", 6);
 
                 break;
 
             case Greetings.None:
 
-                Scene_Animator.SetInteger("Scene", 2);
+                Scene_Animator.SetInteger("Scene", 6);
+
+                break;
+
+        }
+
+    }
+    public void PlaySceneBoss(Greetings PlayerGreeting)
+    {
+        switch (PlayerGreeting)
+        {
+            case Greetings.Kiss:
+
+                Scene_Animator.SetInteger("Scene", 8);
+
+                break;
+
+            case Greetings.Bump:
+
+                Scene_Animator.SetInteger("Scene", 8);
+
+                break;
+
+            case Greetings.Hug:
+
+                Scene_Animator.SetInteger("Scene", 8);
+
+                break;
+
+            case Greetings.Shake:
+
+                Scene_Animator.SetInteger("Scene", 7);
+
+                break;
+
+            case Greetings.None:
+
+                Scene_Animator.SetInteger("Scene", 8);
 
                 break;
 
@@ -258,14 +258,11 @@ public class AnimationController : MonoBehaviour {
 
             }
             else { playing = true; }
-
             
-        
     }
 
     public void SetSceneEnded()
     {
-
             if ( Scene_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
                 sceneEnded = true;

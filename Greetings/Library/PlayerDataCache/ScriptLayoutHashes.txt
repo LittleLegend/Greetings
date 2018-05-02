@@ -131,7 +131,7 @@ e763036081c708b34f78f5a56f72c23d TextMeshPro-2017.3-1.0.56-Runtime.dll:TMPro.TMP
 136f28bae18bcd1072d830ee3456f3ab TextMeshPro-2017.3-1.0.56-Runtime.dll:TMPro.TMP_SubMesh
 5833a86cc374f497ae8d9fb9d8c3e5f4 TextMeshPro-2017.3-1.0.56-Runtime.dll:TMPro.TMP_SubMeshUI
 d672cee35261f9935d5ce974c746730f TextMeshPro-2017.3-1.0.56-Runtime.dll:TMPro.TMP_Text
-573ee4c240e5811869a8f1d58336ac43 Assembly-CSharp.dll:.Doorstep
+ad90b06bf6ba7c529690c3ec44909347 Assembly-CSharp.dll:.Doorstep
 322cb40e1e282f28af980cbef7922a90 UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsEventTracker
 dc07d7ad69b399a46e92c483bf1c04ca UnityEngine.Analytics.dll:UnityEngine.Analytics.AnalyticsTracker
 f9c4e6861be072c5810835a789da7ca2 Assembly-CSharp.dll:.InputController
@@ -184,7 +184,7 @@ a8ed45ab553b07236625df6cc6ac449c TextMeshPro-2017.3-1.0.56-Editor.dll:TMPro.Edit
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.TeleType
 8a50d3d11bf0cc541f5c35347dd25633 Assembly-CSharp.dll:TMPro.Examples.ShaderPropAnimator
-d617c73a9a258382e8c42be4eca982b5 Assembly-CSharp.dll:.AnimationController
+2894997ca7143e29f3afc2050107a43e Assembly-CSharp.dll:.AnimationController
 76015de5fcb247eeb8df66c001d5a22d Assembly-CSharp.dll:TMPro.Examples.TMP_FrameRateCounter
 b8f04bdad423045528c67dfa4c3dca0d Assembly-CSharp.dll:TMPro.Examples.VertexShakeA
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -226,3 +226,4 @@ afc52d27c3ec0bd47909e81bd45fbffa Assembly-CSharp.dll:TMPro.TMP_TextEventHandler
 af7666733efcc974926d7d470e1732a6 Assembly-CSharp.dll:TMPro.Examples.SkewTextExample
 34e025057ef78b1bf238460cdf6583a3 Assembly-CSharp.dll:TMPro.Examples.ObjectSpin
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.SimpleScript
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SceneManager

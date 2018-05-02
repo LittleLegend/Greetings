@@ -79,7 +79,9 @@ public class InputController: MonoBehaviour{
     public void buttonOpenDoor()
     {
 
-        if (Player.Doorstep.CurrentGameState == GameState.OpenDoor && Player.Doorstep.AnimationController.playing == false)
+        if (Player.Doorstep.CurrentGameState == GameState.OpenDoor && 
+            Player.Doorstep.AnimationController.playing == false &&
+            Player.Doorstep.AnimationController.guestChanged==true )
         {
             
             Player.OpenDoor();

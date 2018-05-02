@@ -81,6 +81,7 @@ public class Doorstep : MonoBehaviour {
         Timer = new Timer();
         
         AnimationController.OpenDoor();
+        AnimationController.guestChanged = false;
         InputController.startInputGreeting();
         
         StartCoroutine(CheckForTimeout());
@@ -92,13 +93,11 @@ public class Doorstep : MonoBehaviour {
 
     public void EndGreetTime()
     {
-        
         AnimationController.CloseDoor();
         AnimationController.EnableScene(false);
         AnimationController.ResetScene();
         CurrentGameState = GameState.OpenDoor;
-        StartCoroutine(changeGuest(0.5f));
-
+        StartCoroutine(changeGuest(0.1f));
     }
     
     public IEnumerator changeGuest(float delay)
@@ -113,8 +112,11 @@ public class Doorstep : MonoBehaviour {
                 CurrentGuest = PeopleFactory.createRandom();
                 PeopleList.Add(CurrentGuest);
                 AnimationController.SetGuest(CurrentGuest.Type);
+                yield return new WaitForSeconds(delay);
+                AnimationController.guestChanged = true;
                 break;
             }
+            yield return null;
         }
     }
 
@@ -141,8 +143,9 @@ public class Doorstep : MonoBehaviour {
         
         InputController.startWatchScene();
 
+        AnimationController.PlaySceneRole(CurrentGuest.Type, PlayerGreeting);
         AnimationController.EnableScene(true);
-        AnimationController.PlaySceneRole(CurrentGuest.Type,PlayerGreeting);
+       
         
       
     }

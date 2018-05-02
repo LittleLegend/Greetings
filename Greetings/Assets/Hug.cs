@@ -25,8 +25,8 @@ public class Hug : Gesture {
         screenPoint = Doorstep.Camera.ScreenToViewportPoint(screenPoint);
 
         if (Input.GetMouseButton(0)
-             && screenPoint.x >= 0
-             && screenPoint.y >= 0)
+             && screenPoint.x >= 0.5
+             && screenPoint.y >= 0.5)
         {
             Player.setGreetCommand(this);
         }
