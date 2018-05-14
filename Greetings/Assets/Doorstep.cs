@@ -81,6 +81,7 @@ public class Doorstep : MonoBehaviour {
         Timer = new Timer();
         
         AnimationController.OpenDoor();
+        AnimationController.SetClock(1, CurrentGuest.MaxGreetingTime);
         AnimationController.guestChanged = false;
         InputController.startInputGreeting();
         
@@ -94,6 +95,7 @@ public class Doorstep : MonoBehaviour {
     public void EndGreetTime()
     {
         AnimationController.CloseDoor();
+        AnimationController.SetClock(0, 0);
         AnimationController.EnableScene(false);
         AnimationController.ResetScene();
         CurrentGameState = GameState.OpenDoor;

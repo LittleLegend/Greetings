@@ -1384,6 +1384,7 @@ MonoBehaviour:
   Doorstep_Animator: {fileID: 2032014377}
   Guest_Animator: {fileID: 595004419}
   Scene_Animator: {fileID: 661492883}
+  Clock_Animator: {fileID: 555470225}
   SceneRenderer: {fileID: 1207844247}
   GreetingRenderer: {fileID: 661492882}
   playing: 0

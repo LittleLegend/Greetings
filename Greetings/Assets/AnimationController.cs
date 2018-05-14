@@ -8,6 +8,7 @@ public class AnimationController : MonoBehaviour {
     public Animator Doorstep_Animator;
     public Animator Guest_Animator;
     public Animator Scene_Animator;
+    public Animator Clock_Animator;
     public SpriteRenderer SceneRenderer;
     public SpriteRenderer GreetingRenderer;
     public bool playing;
@@ -19,6 +20,13 @@ public class AnimationController : MonoBehaviour {
             SetSceneEnded();
             SetPlaying();
         
+    }
+
+    public void SetClock(int running, float seconds)
+    {
+        Clock_Animator.SetInteger("Running", running);
+        Clock_Animator.SetFloat("Speed", 5/seconds);
+
     }
 
     public void SetGuest(Roles Role)
