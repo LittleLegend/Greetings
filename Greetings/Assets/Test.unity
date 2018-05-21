@@ -1272,6 +1272,7 @@ GameObject:
   - component: {fileID: 2032014377}
   - component: {fileID: 2032014378}
   - component: {fileID: 2032014379}
+  - component: {fileID: 2032014380}
   m_Layer: 0
   m_Name: Doorstep
   m_TagString: Untagged
@@ -1296,6 +1297,8 @@ MonoBehaviour:
   AnimationController: {fileID: 2032014378}
   InputController: {fileID: 2032014379}
   CurrentGameState: 0
+  DataManager: {fileID: 2032014380}
+  points: 30
 --- !u!4 &2032014375
 Transform:
   m_ObjectHideFlags: 0
@@ -1403,3 +1406,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 347105372}
   InputLocked: 0
+--- !u!114 &2032014380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2032014373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2543a49114569cb4c8a8b72be81f69f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BalancingDataCSV: {fileID: 4900000, guid: 84ad7a9c28aa8ed409f394683e98b35b, type: 3}
+  PeopleDataCSV: {fileID: 4900000, guid: 6c2751ec22819e6498781b5f047ee0a3, type: 3}

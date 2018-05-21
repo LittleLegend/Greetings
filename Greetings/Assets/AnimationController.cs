@@ -77,183 +77,80 @@ public class AnimationController : MonoBehaviour {
         Scene_Animator.SetInteger("Scene", 0);
     }
 
-    public void PlaySceneRole(Roles GuestType, Greetings PlayerGreeting)
+    public void PlaySceneRole(People People, Greetings PlayerGreeting)
     {
-        switch(GuestType)
+        switch(People.Type)
         {
             case Roles.Wife:
 
-                PlaySceneWife(PlayerGreeting);
+                PlaySceneWife(People, PlayerGreeting);
 
                 break;
 
             case Roles.Boss:
 
-                PlaySceneBoss(PlayerGreeting);
+                PlaySceneBoss(People,PlayerGreeting);
 
                 break;
 
             case Roles.Friend:
 
-                PlaySceneFriend(PlayerGreeting);
+                PlaySceneFriend(People, PlayerGreeting);
 
                 break;
 
             case Roles.Mother:
 
-                PlaySceneMother(PlayerGreeting);
+                PlaySceneMother(People, PlayerGreeting);
 
                 break;
 
         }
     }
-    public void PlaySceneWife(Greetings PlayerGreeting)
+    public void PlaySceneWife(People People,Greetings PlayerGreeting)
     {
-        switch (PlayerGreeting)
-        {
-            case Greetings.Kiss:
-
-                Scene_Animator.SetInteger("Scene", 1);
-
-                break;
-
-            case Greetings.Bump:
-
-                Scene_Animator.SetInteger("Scene", 2);
-
-                break;
-
-            case Greetings.Hug:
-
-                Scene_Animator.SetInteger("Scene", 2);
-
-                break;
-
-            case Greetings.Shake:
-
-                Scene_Animator.SetInteger("Scene", 2);
-
-                break;
-
-            case Greetings.None:
-
-                Scene_Animator.SetInteger("Scene", 2);
-
-                break;
-
-        }
+        
+                if (People.WantedGreeting == PlayerGreeting)
+                {
+                    Scene_Animator.SetInteger("Scene", 1);
+                }else
+                {
+                    Scene_Animator.SetInteger("Scene", 2);
+                }
 
     }
-    public void PlaySceneFriend(Greetings PlayerGreeting)
+    public void PlaySceneFriend(People People,Greetings PlayerGreeting)
     {
-        switch (PlayerGreeting)
+        if (People.WantedGreeting == PlayerGreeting)
         {
-            case Greetings.Kiss:
-
-                Scene_Animator.SetInteger("Scene", 4);
-
-                break;
-
-            case Greetings.Bump:
-
-                Scene_Animator.SetInteger("Scene", 3);
-
-                break;
-
-            case Greetings.Hug:
-
-                Scene_Animator.SetInteger("Scene", 4);
-
-                break;
-
-            case Greetings.Shake:
-
-                Scene_Animator.SetInteger("Scene", 4);
-
-                break;
-
-            case Greetings.None:
-
-                Scene_Animator.SetInteger("Scene", 4);
-
-                break;
-
+            Scene_Animator.SetInteger("Scene", 3);
         }
-
+        else
+        {
+            Scene_Animator.SetInteger("Scene", 4);
+        }
     }
-    public void PlaySceneMother(Greetings PlayerGreeting)
+    public void PlaySceneMother(People People,Greetings PlayerGreeting)
     {
-        switch (PlayerGreeting)
+        if (People.WantedGreeting == PlayerGreeting)
         {
-            case Greetings.Kiss:
-
-                Scene_Animator.SetInteger("Scene", 6);
-
-                break;
-
-            case Greetings.Bump:
-
-                Scene_Animator.SetInteger("Scene", 6);
-
-                break;
-
-            case Greetings.Hug:
-
-                Scene_Animator.SetInteger("Scene", 5);
-
-                break;
-
-            case Greetings.Shake:
-
-                Scene_Animator.SetInteger("Scene", 6);
-
-                break;
-
-            case Greetings.None:
-
-                Scene_Animator.SetInteger("Scene", 6);
-
-                break;
-
+            Scene_Animator.SetInteger("Scene", 5);
         }
-
+        else
+        {
+            Scene_Animator.SetInteger("Scene", 6);
+        }
     }
-    public void PlaySceneBoss(Greetings PlayerGreeting)
+    public void PlaySceneBoss(People People,Greetings PlayerGreeting)
     {
-        switch (PlayerGreeting)
+        if (People.WantedGreeting == PlayerGreeting)
         {
-            case Greetings.Kiss:
-
-                Scene_Animator.SetInteger("Scene", 8);
-
-                break;
-
-            case Greetings.Bump:
-
-                Scene_Animator.SetInteger("Scene", 8);
-
-                break;
-
-            case Greetings.Hug:
-
-                Scene_Animator.SetInteger("Scene", 8);
-
-                break;
-
-            case Greetings.Shake:
-
-                Scene_Animator.SetInteger("Scene", 7);
-
-                break;
-
-            case Greetings.None:
-
-                Scene_Animator.SetInteger("Scene", 8);
-
-                break;
-
+            Scene_Animator.SetInteger("Scene", 7);
         }
-
+        else
+        {
+            Scene_Animator.SetInteger("Scene", 8);
+        }
     }
 
     public void  SetPlaying()

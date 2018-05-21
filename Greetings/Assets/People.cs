@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 
-    public abstract class People
+    public class People
     {
 
         
@@ -15,9 +15,6 @@ using Enums;
         public float GreetingTime;
         public float MaxGreetingTime;
        
-
-
-
     public void SetGreetedRight(bool GreetedRight)
     {
         Greeted = true;

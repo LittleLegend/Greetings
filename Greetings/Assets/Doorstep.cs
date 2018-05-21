@@ -28,12 +28,19 @@ public class Doorstep : MonoBehaviour {
     
     public GestureFactory GestureFactory;
 
+    public DataManager DataManager;
+
+    public int points;
+
  
     void Start () {
 
+
         PeopleList = new List<People>();
-        PeopleFactory = new PeopleFactory();
+        PeopleFactory = new PeopleFactory(DataManager);
         GestureFactory = new GestureFactory(this,Player);
+
+        DataManager.Load();
 
         InputController.GestureList = GestureFactory.createGestureList();
 
@@ -111,7 +118,7 @@ public class Doorstep : MonoBehaviour {
             if (AnimationController.playing == false)
             {
 
-                CurrentGuest = PeopleFactory.createRandom();
+                CurrentGuest = PeopleFactory.createRandom(points);
                 PeopleList.Add(CurrentGuest);
                 AnimationController.SetGuest(CurrentGuest.Type);
                 yield return new WaitForSeconds(delay);
@@ -145,7 +152,7 @@ public class Doorstep : MonoBehaviour {
         
         InputController.startWatchScene();
 
-        AnimationController.PlaySceneRole(CurrentGuest.Type, PlayerGreeting);
+        AnimationController.PlaySceneRole(CurrentGuest,PlayerGreeting);
         AnimationController.EnableScene(true);
        
         

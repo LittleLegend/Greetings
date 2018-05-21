@@ -6,8 +6,14 @@ using Enums;
 
 public class PeopleFactory {
 
-   
-    public People createRandom()
+    public DataManager DataManager;
+    
+    public PeopleFactory(DataManager DataManager)
+    {
+        this.DataManager = DataManager;
+    }
+
+    public People createRandom(int points)
     {
         int rand = Random.Range(1,5);
         People result=null;
@@ -15,50 +21,64 @@ public class PeopleFactory {
         switch (rand)
         {
             case 1:
-                result = new Boss();
+                result= createFriend(points);
                 break;
 
             case 2:
-                result = new Wife();
+                result = createMother(points);
                 break;
 
             case 3:
-                result = new Friend();
+                result = createWife(points);
                 break;
 
             case 4:
-                result = new Mother();
+                result = createBoss(points);
                 break;
         }
 
         return result;
         }
-
-    public People createPeople(Roles Role )
+    
+    public People createMother(int points)
     {
-        People result = null;
-
-        switch (Role)
-        {
-            case Roles.Boss:
-                result = new Boss();
-                break;
-
-            case Roles.Wife:
-                result = new Wife();
-                break;
-
-            case Roles.Friend:
-                result = new Friend();
-                break;
-
-            case Roles.Mother:
-                result = new Mother();
-                break;
-        }
+        People result = new People();
+        result.Type = Roles.Mother;
+        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points);
+        result.WantedGreeting = DataManager.GetWantedGreeting("mother");
 
         return result;
     }
 
-    
+    public People createFriend(int points)
+    {
+        People result = new People();
+        result.Type = Roles.Friend;
+        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points);
+        result.WantedGreeting = DataManager.GetWantedGreeting("friend");
+
+        return result;
+    }
+
+    public People createBoss(int points)
+    {
+        People result = new People();
+        result.Type = Roles.Boss;
+        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points);
+        result.WantedGreeting = DataManager.GetWantedGreeting("boss");
+
+        return result;
+    }
+
+    public People createWife(int points)
+    {
+        
+        People result = new People();
+        
+        result.Type = Roles.Wife;
+        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points);
+        result.WantedGreeting = DataManager.GetWantedGreeting("wife");
+
+        return result;
+    }
 }
