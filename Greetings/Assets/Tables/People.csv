@@ -1,5 +1,5 @@
-name,greeting,timeFactor
-wife,kiss,1
-boss,shake,1
-friend,bump,1
-mother,hug,1
+name,greeting,timeFactor,points
+wife,kiss,2,1
+boss,shake,1,1
+friend,bump,1,1
+mother,hug,1,1

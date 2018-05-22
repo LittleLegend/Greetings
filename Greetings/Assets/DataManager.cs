@@ -45,6 +45,16 @@ public class DataManager : MonoBehaviour {
         return result;
     }
 
+    public int GetPoints(string name)
+    {
+        return int.Parse(PeopleData.Find_name(name).points);
+    }
+
+    public float GetTimeFactor(string name)
+    {
+        return float.Parse(PeopleData.Find_name(name).timeFactor);
+    }
+
     public float GetMaxGreetTime(int points)
     {
         float result=0;

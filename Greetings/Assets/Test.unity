@@ -1298,7 +1298,7 @@ MonoBehaviour:
   InputController: {fileID: 2032014379}
   CurrentGameState: 0
   DataManager: {fileID: 2032014380}
-  points: 30
+  points: 0
 --- !u!4 &2032014375
 Transform:
   m_ObjectHideFlags: 0

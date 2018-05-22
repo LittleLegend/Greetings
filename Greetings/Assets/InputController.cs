@@ -25,9 +25,9 @@ public class InputController: MonoBehaviour{
 
     public void checkInput(Gesture Gesture)
     {
-        CheckInputCommand = new CheckInputCommand(Gesture);
-        CheckInputCommand.execute();
-        
+        //CheckInputCommand = new CheckInputCommand(Gesture);
+        //CheckInputCommand.execute();
+        Gesture.checkInput();
     }
 
     public IEnumerator checkGreeting()

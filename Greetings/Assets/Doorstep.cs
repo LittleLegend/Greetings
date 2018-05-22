@@ -101,6 +101,7 @@ public class Doorstep : MonoBehaviour {
 
     public void EndGreetTime()
     {
+        
         AnimationController.CloseDoor();
         AnimationController.SetClock(0, 0);
         AnimationController.EnableScene(false);
@@ -135,10 +136,12 @@ public class Doorstep : MonoBehaviour {
             if (PlayerGreeting == CurrentGuest.WantedGreeting)
             {
                 CurrentGuest.SetGreetedRight(true);
+                points += CurrentGuest.points;
             }
             else
             {
                 CurrentGuest.SetGreetedRight(false);
+                points = 0;
             }
         
 

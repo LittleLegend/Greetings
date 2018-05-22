@@ -44,8 +44,9 @@ public class PeopleFactory {
     {
         People result = new People();
         result.Type = Roles.Mother;
-        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points);
+        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points)* DataManager.GetTimeFactor("mother");
         result.WantedGreeting = DataManager.GetWantedGreeting("mother");
+        result.points = DataManager.GetPoints("mother");
 
         return result;
     }
@@ -54,8 +55,9 @@ public class PeopleFactory {
     {
         People result = new People();
         result.Type = Roles.Friend;
-        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points);
+        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points) * DataManager.GetTimeFactor("friend");
         result.WantedGreeting = DataManager.GetWantedGreeting("friend");
+        result.points = DataManager.GetPoints("friend");
 
         return result;
     }
@@ -64,8 +66,9 @@ public class PeopleFactory {
     {
         People result = new People();
         result.Type = Roles.Boss;
-        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points);
+        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points) * DataManager.GetTimeFactor("boss");
         result.WantedGreeting = DataManager.GetWantedGreeting("boss");
+        result.points = DataManager.GetPoints("boss");
 
         return result;
     }
@@ -76,8 +79,9 @@ public class PeopleFactory {
         People result = new People();
         
         result.Type = Roles.Wife;
-        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points);
+        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points) * DataManager.GetTimeFactor("wife");
         result.WantedGreeting = DataManager.GetWantedGreeting("wife");
+        result.points = DataManager.GetPoints("wife");
 
         return result;
     }
