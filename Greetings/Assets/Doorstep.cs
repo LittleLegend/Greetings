@@ -30,7 +30,9 @@ public class Doorstep : MonoBehaviour {
 
     public DataManager DataManager;
 
-    public int points;
+    public UIView UIView;
+
+     int points = 0;
 
  
     void Start () {
@@ -49,6 +51,8 @@ public class Doorstep : MonoBehaviour {
         CurrentGameState = GameState.OpenDoor;
 
         StartCoroutine(changeGuest(0));
+
+        UIView.SetPointLabel(points);
     }
 
     public IEnumerator CheckForTimeout()
@@ -137,12 +141,14 @@ public class Doorstep : MonoBehaviour {
             {
                 CurrentGuest.SetGreetedRight(true);
                 points += CurrentGuest.points;
-            }
+                UIView.SetPointLabel(points);
+        }
             else
             {
                 CurrentGuest.SetGreetedRight(false);
                 points = 0;
-            }
+                UIView.SetPointLabel(points);
+        }
         
 
         Timer.EndTimer();
