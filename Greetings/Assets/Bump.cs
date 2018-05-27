@@ -6,33 +6,28 @@ using System;
 
 public class Bump : Gesture
 {
-    public Bump(Doorstep Doorstep,Player Player)
+
+    public Bump(Player Player, StateMachine StateMachine)
     {
-        this.Doorstep = Doorstep;
+        this.StateMachine = StateMachine;
         this.Player = Player;
     }
 
     public override void greet()
     {
-        Doorstep.HandleGreetings(Greetings.Bump);
+        Player.PlayerGreeting = Greetings.Bump;
+        StateMachine.CurrentGameState = GameState.CompareGreetings;
+
     }
 
     public override void checkInput()
     {
-        Vector3 screenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-        screenPoint = Doorstep.Camera.ScreenToViewportPoint(screenPoint);
-        
-
         if (Input.GetMouseButton(0)
-             && screenPoint.x >= 0.5
-             && screenPoint.y <= 0.5)
+             && Screenpoint.x >= 0.5
+             && Screenpoint.y <= 0.5)
         {
             Player.setGreetCommand(this);
         }
     }
 
-    public override void undoGreet()
-    {
-        Doorstep.PeopleList.RemoveAt(Doorstep.PeopleList.Count - 1);
-    }
 }

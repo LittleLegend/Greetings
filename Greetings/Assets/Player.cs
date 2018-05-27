@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 
-public class Player: MonoBehaviour {
+public class Player{
 
-    [SerializeField]
-    public Doorstep Doorstep;
-    
+    public StateMachine StateMachine;
     public ICommand GreetCommand;
+    public Greetings PlayerGreeting;
+
+    public Player(StateMachine StateMachine)
+    {
+        this.StateMachine = StateMachine;
+        GreetCommand = new GreetCommand(new None(this,StateMachine));
+    }
 
     public void setGreetCommand(Gesture Gesture)
     {
@@ -18,29 +23,29 @@ public class Player: MonoBehaviour {
 
     public void resetGreetCommand()
     {
-        GreetCommand = new GreetCommand(new None(Doorstep,this));
+        GreetCommand = new GreetCommand(new None(this, StateMachine));
     }
-
-    public void undoGreet()
-    {
-        GreetCommand.undo();
-        resetGreetCommand();
-    }
-
+    
     public void greet()
     {
+        Debug.Log("Hi");
         GreetCommand.execute();
         resetGreetCommand();
     }
-    
-    public void OpenDoor()
+
+    public void miss()
     {
-        Doorstep.StartGreetTime();
+        resetGreetCommand();
+        GreetCommand.execute();
+    }
+    public void openDoor()
+    {
+        StateMachine.CurrentGameState = GameState.SettingTimer;
     }
 
-    public void CloseDoor()
+    public void closeDoor()
     {
-        Doorstep.EndGreetTime();
+        StateMachine.CurrentGameState = GameState.OpenDoor;
     }
 
 }

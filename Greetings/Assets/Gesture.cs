@@ -5,15 +5,17 @@ using UnityEngine;
 using Enums;
 
 public abstract class Gesture{
-
-    public Doorstep Doorstep;
-
-    public Player Player;
     
+    public Player Player;
+
+    public StateMachine StateMachine;
+
+    public Vector3 Screenpoint;
+
     public abstract void greet();
 
     public abstract void checkInput();
 
-    public abstract void undoGreet();
+    
     
 }

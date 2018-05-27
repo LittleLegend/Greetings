@@ -20,8 +20,4 @@ public  class GreetCommand:ICommand
         Gesture.greet();
     }
  
-    public void undo()
-    {
-        Gesture.undoGreet();
-    }
 }

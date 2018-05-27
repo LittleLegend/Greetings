@@ -17,8 +17,5 @@ public class CheckInputCommand : ICommand {
         Gesture.checkInput();
     }
 
-    public void undo()
-    {
-        throw new System.NotImplementedException();
-    }
+    
 }

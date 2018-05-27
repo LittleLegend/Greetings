@@ -3,101 +3,64 @@ using System.Collections.Generic;
 using UnityEngine;
 using Enums;
 
-public class InputController: MonoBehaviour{
+public class InputController{
 
-    public Player Player;
+    Player Player;
+    Camera Camera;
     public bool InputLocked;
 
     public List<Gesture> GestureList;
     public ICommand CheckInputCommand;
 
-    public void startInputGreeting()
+    public InputController(Camera Camera, Player Player)
     {
-        StartCoroutine(checkGreeting());
-        StartCoroutine(releaseGreeting());
-        
+        this.Camera = Camera;
+        this.Player = Player;
     }
 
-    public void startWatchScene()
+    public void InputGreetingInput()
     {
-        StartCoroutine(watchScene());
+        checkGreeting();
+        releaseGreeting();
     }
 
-    public void checkInput(Gesture Gesture)
+    public void checkGreeting()
     {
-        //CheckInputCommand = new CheckInputCommand(Gesture);
-        //CheckInputCommand.execute();
-        Gesture.checkInput();
-    }
-
-    public IEnumerator checkGreeting()
-    {
-        while (Player.Doorstep.CurrentGameState == GameState.InputGreeting)
-        {
-            if ( Player.Doorstep.AnimationController.playing == false)
-            {
-                
-                for (int i =0; i <GestureList.Count;i++)
+                for (int i = 0; i < GestureList.Count; i++)
                 {
                     checkInput(GestureList[i]);
-                }
-            }
-            yield return null;
-        }
-        
+                } 
     }
 
-    public IEnumerator releaseGreeting()
-    {
-        while (Player.Doorstep.CurrentGameState == GameState.InputGreeting)
-        {
-            if (Player.Doorstep.AnimationController.playing == false &&
-                Input.GetMouseButtonUp(0))
+    public void releaseGreeting()
+    { 
+            if (Input.GetMouseButtonUp(0))
             {
                 Player.greet();
+            
             }
-            yield return null;
-        }
-        
-    }
-
-    public IEnumerator watchScene()
-    {
-        while (Player.Doorstep.CurrentGameState == GameState.WatchScene)
-        {
-            if (Player.Doorstep.AnimationController.sceneEnded == true)
-            {
-                if (Input.GetMouseButtonUp(0))
-                {
-                    Player.CloseDoor();
-                }
-            }
-            yield return null;
-        }
     }
     
-    public void buttonOpenDoor()
+    public void checkInput(Gesture Gesture)
     {
-
-        if (Player.Doorstep.CurrentGameState == GameState.OpenDoor && 
-            Player.Doorstep.AnimationController.playing == false &&
-            Player.Doorstep.AnimationController.guestChanged==true )
-        {
-            
-            Player.OpenDoor();
-        }
-
+        Gesture.Screenpoint = GetScreenTouchPoint();
+        CheckInputCommand = new CheckInputCommand(Gesture);
+        CheckInputCommand.execute();
     }
-
-    public void buttonUndo()
+    
+    public Vector3 GetScreenTouchPoint()
     {
+        Vector3 ScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+        ScreenPoint = Camera.ScreenToViewportPoint(ScreenPoint);
 
-        if (Player.Doorstep.CurrentGameState == GameState.OpenDoor && Player.Doorstep.AnimationController.playing == false)
-        {
-
-            Player.undoGreet();
-        }
-
+        return ScreenPoint;
     }
-
+    
+    public void WatchSceneInput()
+    {
+                if (Input.GetMouseButtonUp(0))
+                {
+                    Player.closeDoor();
+                }
+    }
 }

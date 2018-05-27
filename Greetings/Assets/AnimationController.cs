@@ -11,24 +11,35 @@ public class AnimationController : MonoBehaviour {
     public Animator Clock_Animator;
     public SpriteRenderer SceneRenderer;
     public SpriteRenderer GreetingRenderer;
-    public bool playing;
-    public bool sceneEnded;
-    public bool guestChanged;
-
-    void Update()
+    
+    public void InputGreetingAnimation(People CurrentGuest)
     {
-            SetSceneEnded();
-            SetPlaying();
+        Doorstep_Animator.SetBool("DoorOpen", true);
+        SetClock(1, CurrentGuest.MaxGreetingTime);
         
+    }
+
+    public void WatchSceneAnimation(People CurrentGuest, Greetings PlayerGreeting)
+    {
+        EnableScene(true);
+        PlaySceneRole(CurrentGuest, PlayerGreeting);
+        
+    }
+
+    public void CloseDoorAnimation()
+    {
+        Doorstep_Animator.SetBool("DoorOpen", false);
+        SetClock(0, 0);
+        EnableScene(false);
+        Scene_Animator.SetInteger("Scene", 0);
+
     }
 
     public void SetClock(int running, float seconds)
     {
         Clock_Animator.SetInteger("Running", running);
         Clock_Animator.SetFloat("Speed", 5/seconds);
-
     }
-
     public void SetGuest(Roles Role)
     {
         switch (Role)
@@ -49,20 +60,7 @@ public class AnimationController : MonoBehaviour {
                 Guest_Animator.SetInteger("Guest", 4);
                 break;
         }
-    }
-
-    public void OpenDoor()
-    {
-        playing = true;
-        Doorstep_Animator.SetBool("DoorOpen", true);
-    }
-
-    public void CloseDoor()
-    {
-        playing = true;
-        Doorstep_Animator.SetBool("DoorOpen", false);
-    }
-
+    } 
     public void EnableScene(bool Enabled)
     {
         {
@@ -71,11 +69,7 @@ public class AnimationController : MonoBehaviour {
 
         }
     }
-
-    public void ResetScene()
-    {
-        Scene_Animator.SetInteger("Scene", 0);
-    }
+    
 
     public void PlaySceneRole(People People, Greetings PlayerGreeting)
     {
@@ -153,29 +147,7 @@ public class AnimationController : MonoBehaviour {
         }
     }
 
-    public void  SetPlaying()
-    {
-            if (Doorstep_Animator.GetCurrentAnimatorStateInfo(0).IsName("Door_Open_Still")
-               || Doorstep_Animator.GetCurrentAnimatorStateInfo(0).IsName("Door_Close_Still")
-               )
-            {
-                playing = false;
-
-            }
-            else { playing = true; }
-            
-    }
-
-    public void SetSceneEnded()
-    {
-            if ( Scene_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-            {
-                sceneEnded = true;
-                playing = true;
-        }
-            else { sceneEnded = false; }
-        
-    }
+  
 
 
 }

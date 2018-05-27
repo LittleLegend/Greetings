@@ -5,15 +5,17 @@ using Enums;
 
 public class None : Gesture {
 
-    public None(Doorstep Doorstep, Player Player)
+    
+    public None(Player Player, StateMachine StateMachine)
     {
-        this.Doorstep = Doorstep;
+        this.StateMachine = StateMachine;
         this.Player = Player;
     }
 
     public override void greet()
     {
-        Doorstep.HandleGreetings(Greetings.None);
+        Player.PlayerGreeting = Greetings.None;
+        StateMachine.CurrentGameState = GameState.CompareGreetings;
     }
 
     public override void checkInput()
@@ -21,8 +23,5 @@ public class None : Gesture {
         
     }
 
-    public override void undoGreet()
-    {
-        Doorstep.PeopleList.RemoveAt(Doorstep.PeopleList.Count - 1);
-    }
+    
 }

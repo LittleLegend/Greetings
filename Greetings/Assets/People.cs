@@ -15,6 +15,7 @@ using Enums;
         public float GreetingTime;
         public float MaxGreetingTime;
         public int points;
+        public int combo;
        
     public void SetGreetedRight(bool GreetedRight)
     {

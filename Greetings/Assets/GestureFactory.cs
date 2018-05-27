@@ -5,16 +5,17 @@ using Enums;
 
 public class GestureFactory{
 
-    public Doorstep Doorstep;
-    public Player Player;
+    
+    Player Player;
+    StateMachine StateMachine;
     public List<Gesture> GestureList;
 
-   public GestureFactory(Doorstep Doorstep, Player Player)
+   public GestureFactory(Player Player,StateMachine StateMachine)
     {
-        this.Doorstep = Doorstep;
         this.Player = Player;
+        this.StateMachine = StateMachine;
     }
-
+    
     public List<Gesture> createGestureList()
     {
         GestureList = new List<Gesture>();
@@ -28,26 +29,26 @@ public class GestureFactory{
 
     public Kiss createKiss()
     {
-        return new Kiss(Doorstep,Player);
+        return new Kiss(Player, StateMachine);
     }
     public Bump createBump()
     {
 
-        return new Bump(Doorstep, Player);
+        return new Bump(Player, StateMachine);
     }
     public Shake createShake()
     {
 
-        return new Shake(Doorstep, Player);
+        return new Shake(Player, StateMachine);
     }
     public Hug createHug()
     {
-        return new Hug(Doorstep, Player);
+        return new Hug(Player, StateMachine);
     }
 
     public None createNone()
     {
-        return new None(Doorstep, Player);
+        return new None(Player, StateMachine);
     }
 
 }

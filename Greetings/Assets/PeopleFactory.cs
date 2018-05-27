@@ -21,68 +21,35 @@ public class PeopleFactory {
         switch (rand)
         {
             case 1:
-                result= createFriend(points);
+                result= createPerson(points,"mother");
                 break;
 
             case 2:
-                result = createMother(points);
+                result = createPerson(points, "friend");
                 break;
 
             case 3:
-                result = createWife(points);
+                result = createPerson(points, "wife");
                 break;
 
             case 4:
-                result = createBoss(points);
+                result = createPerson(points, "boss");
                 break;
         }
 
         return result;
         }
     
-    public People createMother(int points)
+    public People createPerson(int points, string name)
     {
         People result = new People();
-        result.Type = Roles.Mother;
-        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points)* DataManager.GetTimeFactor("mother");
-        result.WantedGreeting = DataManager.GetWantedGreeting("mother");
-        result.points = DataManager.GetPoints("mother");
+        result.Type = DataManager.GetTypeByName(name);
+        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points) * DataManager.GetTimeFactor(name);
+        result.WantedGreeting = DataManager.GetWantedGreetingByName(name);
+        result.points = DataManager.GetPoints(name);
+        result.combo = DataManager.GetCombo(name);
 
         return result;
     }
-
-    public People createFriend(int points)
-    {
-        People result = new People();
-        result.Type = Roles.Friend;
-        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points) * DataManager.GetTimeFactor("friend");
-        result.WantedGreeting = DataManager.GetWantedGreeting("friend");
-        result.points = DataManager.GetPoints("friend");
-
-        return result;
-    }
-
-    public People createBoss(int points)
-    {
-        People result = new People();
-        result.Type = Roles.Boss;
-        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points) * DataManager.GetTimeFactor("boss");
-        result.WantedGreeting = DataManager.GetWantedGreeting("boss");
-        result.points = DataManager.GetPoints("boss");
-
-        return result;
-    }
-
-    public People createWife(int points)
-    {
-        
-        People result = new People();
-        
-        result.Type = Roles.Wife;
-        result.MaxGreetingTime = DataManager.GetMaxGreetTime(points) * DataManager.GetTimeFactor("wife");
-        result.WantedGreeting = DataManager.GetWantedGreeting("wife");
-        result.points = DataManager.GetPoints("wife");
-
-        return result;
-    }
+    
 }

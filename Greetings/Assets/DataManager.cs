@@ -19,7 +19,32 @@ public class DataManager : MonoBehaviour {
         PeopleData.Load(PeopleDataCSV);
     }
 
-    public Greetings GetWantedGreeting(string name)
+    public Roles GetTypeByName(string name)
+    {
+        Roles result = Roles.None;
+
+        switch (name)
+        {
+            case "mother":
+                result = Roles.Mother;
+                break;
+
+            case "friend":
+                result = Roles.Friend;
+                break;
+
+            case "boss":
+                result = Roles.Boss;
+                break;
+
+            case "wife":
+                result = Roles.Wife;
+                break;
+        }
+        return result;
+    }
+
+    public Greetings GetWantedGreetingByName(string name)
     {
         string wantedGreetingString = PeopleData.Find_name(name).greeting;
         Greetings result = Greetings.None;
@@ -48,6 +73,11 @@ public class DataManager : MonoBehaviour {
     public int GetPoints(string name)
     {
         return int.Parse(PeopleData.Find_name(name).points);
+    }
+
+    public int GetCombo(string name)
+    {
+        return int.Parse(PeopleData.Find_name(name).combo);
     }
 
     public float GetTimeFactor(string name)

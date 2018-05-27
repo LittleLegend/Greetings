@@ -10,6 +10,7 @@ public class PeopleData
 		public string name;
 		public string greeting;
 		public string timeFactor;
+		public string combo;
 		public string points;
 
 	}
@@ -37,7 +38,8 @@ public class PeopleData
 			row.name = grid[i][0];
 			row.greeting = grid[i][1];
 			row.timeFactor = grid[i][2];
-			row.points = grid[i][3];
+			row.combo = grid[i][3];
+			row.points = grid[i][4];
 
 			rowList.Add(row);
 		}
@@ -79,6 +81,14 @@ public class PeopleData
 	public List<Row> FindAll_timeFactor(string find)
 	{
 		return rowList.FindAll(x => x.timeFactor == find);
+	}
+	public Row Find_combo(string find)
+	{
+		return rowList.Find(x => x.combo == find);
+	}
+	public List<Row> FindAll_combo(string find)
+	{
+		return rowList.FindAll(x => x.combo == find);
 	}
 	public Row Find_points(string find)
 	{

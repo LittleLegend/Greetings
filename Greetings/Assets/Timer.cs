@@ -7,7 +7,6 @@ public class Timer{
     
     public float Time;
     public bool TimerRunning=true;
-
     
     public IEnumerator StartTimer(float MaxGreetingTime)
     {
