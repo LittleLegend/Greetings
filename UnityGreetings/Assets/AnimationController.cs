@@ -12,7 +12,7 @@ public class AnimationController : MonoBehaviour {
     public SpriteRenderer SceneRenderer;
     public SpriteRenderer GreetingRenderer;
     
-    public void InputGreetingAnimation(People CurrentGuest)
+    public void OpenDoorAnimation(People CurrentGuest)
     {
         Doorstep_Animator.SetBool("DoorOpen", true);
         SetClock(1, CurrentGuest.MaxGreetingTime);
@@ -26,6 +26,7 @@ public class AnimationController : MonoBehaviour {
         
     }
 
+    
     public void CloseDoorAnimation()
     {
         Doorstep_Animator.SetBool("DoorOpen", false);
@@ -33,6 +34,30 @@ public class AnimationController : MonoBehaviour {
         EnableScene(false);
         Scene_Animator.SetInteger("Scene", 0);
 
+    }
+
+    public bool IsDoorClosed()
+    {
+        if (Doorstep_Animator.GetCurrentAnimatorStateInfo(0).IsName("Door_Close_Still"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public bool IsDoorOpen()
+    {
+        if (Doorstep_Animator.GetCurrentAnimatorStateInfo(0).IsName("Door_Open_Still"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void SetClock(int running, float seconds)

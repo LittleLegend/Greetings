@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ScoreController{
 
-     int combo;
-     int points;
+     int _combo;
+     int _points;
     public List<People> PeopleList;
     public UIController UIController;
 
@@ -17,42 +17,42 @@ public class ScoreController{
 
 	public void SetCombo(int combo)
     {
-        this.combo = combo;
-        UIController.SetComboLabel(combo);
+        _combo = combo;
+        UIController.SetComboLabel(_combo);
     }
 
     public void SetPoints(int points)
     {
-        this.points = points;
-        UIController.SetComboLabel(points);
+        _points = points;
+        UIController.SetPointLabel(_points);
     }
 
     public int GetCombo()
     {
-        return combo;
+        return _combo;
     }
 
     public int GetPoints()
     {
-        return points;
+        return _points;
     }
 
     public void AddCombo(int combo)
     {
-        this.combo += combo;
-        UIController.SetComboLabel(combo);
+        _combo += combo;
+        UIController.SetComboLabel(_combo);
     }
 
     public void AddPoints(int points)
     {
-        this.points += points;
-        UIController.SetComboLabel(points);
+        _points += points;
+        UIController.SetPointLabel(_points);
     }
 
      public void ResetCombo()
     {
-        combo = 0;
-        UIController.SetComboLabel(combo);
+        _combo = 0;
+        UIController.SetComboLabel(_combo);
     }
 
 }

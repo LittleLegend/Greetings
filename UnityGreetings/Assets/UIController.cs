@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour {
 
     public References References;
+    public TextMeshProUGUI ComboLabel;
     public TextMeshProUGUI PointLabel;
 
     Player Player;
@@ -23,7 +24,7 @@ public class UIController : MonoBehaviour {
 
     public void SetComboLabel(int combo)
     {
-        PointLabel.text = combo.ToString();
+        ComboLabel.text = combo.ToString();
     }
 
     public void OpenDoorButton(int ButtonTrigger)
@@ -34,6 +35,7 @@ public class UIController : MonoBehaviour {
         }
         else
         {
+            
             Player.openDoor();
         }
 

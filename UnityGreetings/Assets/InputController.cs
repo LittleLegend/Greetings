@@ -58,7 +58,7 @@ public class InputController{
     
     public void WatchSceneInput()
     {
-                if (Input.GetMouseButtonUp(0))
+                if (Input.GetMouseButtonDown(0))
                 {
                     Player.closeDoor();
                 }

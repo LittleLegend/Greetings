@@ -33,13 +33,14 @@ public class StateMachine: MonoBehaviour{
     {
 
         Setup();
+        ButtonClick();
         OpenDoor();
         SettingTimer();
-        InputGreetingState();
+        InputGreetings();
         CompareGreetings();
         WatchScene();
         CloseDoor();
-        ClosingDoor();
+        SetGuest();
     }
   
 
@@ -66,7 +67,7 @@ public class StateMachine: MonoBehaviour{
         }
     }
 
-    public void OpenDoor()
+    public void ButtonClick()
     {
         if (CurrentGameState == GameState.OpenDoor)
         {
@@ -74,21 +75,35 @@ public class StateMachine: MonoBehaviour{
         }
     }
 
+    public void OpenDoor()
+    {
+        if (CurrentGameState == GameState.OpenDoor)
+        {
+            AnimationController.OpenDoorAnimation(CurrentGuest);
+            if (AnimationController.IsDoorOpen())
+            {
+
+                CurrentGameState = GameState.SettingTimer;
+            }
+        }
+    }
     public void SettingTimer()
     {
         if (CurrentGameState == GameState.SettingTimer)
         {
+            
             Timer = new Timer();
             Timer.StartTimer(CurrentGuest.MaxGreetingTime);
-            CurrentGameState = GameState.InputGreeting;
+
+            CurrentGameState = GameState.InputGreetings;
         }
     }
 
-    public void InputGreetingState()
+    public void InputGreetings()
     {
-        if (CurrentGameState == GameState.InputGreeting)
+        if (CurrentGameState == GameState.InputGreetings)
         {
-            AnimationController.InputGreetingAnimation(CurrentGuest);
+            
             InputController.InputGreetingInput();
             
             if (Timer.Time == CurrentGuest.MaxGreetingTime)
@@ -130,7 +145,6 @@ public class StateMachine: MonoBehaviour{
         if (CurrentGameState == GameState.WatchScene)
         {
             InputController.WatchSceneInput();
-
             AnimationController.WatchSceneAnimation(CurrentGuest, Player.PlayerGreeting);
         }
     }
@@ -141,21 +155,23 @@ public class StateMachine: MonoBehaviour{
         {
             
             AnimationController.CloseDoorAnimation();
-            
-            CurrentGameState = GameState.ClosingDoor;
+
+            if (AnimationController.IsDoorClosed())
+            {
+                CurrentGameState = GameState.SetGuest;
+            }
 
         }
     }
 
-    public void ClosingDoor()
+    public void SetGuest()
     {
-        if (CurrentGameState == GameState.CloseDoor)
+        if (CurrentGameState == GameState.SetGuest)
         {
-
-
             CurrentGuest = PeopleFactory.createRandom(ScoreController.GetCombo());
             ScoreController.PeopleList.Add(CurrentGuest);
             AnimationController.SetGuest(CurrentGuest.Type);
+            CurrentGameState = GameState.ButtonClick;
 
         }
     }

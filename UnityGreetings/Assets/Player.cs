@@ -28,7 +28,7 @@ public class Player{
     
     public void greet()
     {
-        Debug.Log("Hi");
+
         GreetCommand.execute();
         resetGreetCommand();
     }
@@ -40,12 +40,15 @@ public class Player{
     }
     public void openDoor()
     {
-        StateMachine.CurrentGameState = GameState.SettingTimer;
+        if (StateMachine.CurrentGameState == GameState.ButtonClick)
+        {
+            StateMachine.CurrentGameState = GameState.OpenDoor;
+        }
     }
 
     public void closeDoor()
     {
-        StateMachine.CurrentGameState = GameState.OpenDoor;
+        StateMachine.CurrentGameState = GameState.CloseDoor;
     }
 
 }
