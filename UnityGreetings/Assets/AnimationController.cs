@@ -23,14 +23,14 @@ public class AnimationController : MonoBehaviour {
     {
         EnableScene(true);
         PlaySceneRole(CurrentGuest, PlayerGreeting);
-        
+        SetClock(0, 0);
+
     }
 
     
     public void CloseDoorAnimation()
     {
         Doorstep_Animator.SetBool("DoorOpen", false);
-        SetClock(0, 0);
         EnableScene(false);
         Scene_Animator.SetInteger("Scene", 0);
 

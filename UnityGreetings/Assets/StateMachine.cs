@@ -62,7 +62,7 @@ public class StateMachine: MonoBehaviour{
             
             AnimationController.SetGuest(CurrentGuest.Type);
             
-            CurrentGameState = GameState.OpenDoor;
+            CurrentGameState = GameState.ButtonClick;
 
         }
     }
@@ -121,8 +121,8 @@ public class StateMachine: MonoBehaviour{
             if (Player.PlayerGreeting == CurrentGuest.WantedGreeting)
             {
                 CurrentGuest.SetGreetedRight(true);
-                ScoreController.AddPoints(CurrentGuest.points);
                 ScoreController.AddCombo(CurrentGuest.combo);
+                ScoreController.AddPoints(CurrentGuest.points * ScoreController.GetCombo());
 
             }
             else

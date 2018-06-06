@@ -24,7 +24,7 @@ public class UIController : MonoBehaviour {
 
     public void SetComboLabel(int combo)
     {
-        ComboLabel.text = combo.ToString();
+        ComboLabel.text = "x"+combo.ToString();
     }
 
     public void OpenDoorButton(int ButtonTrigger)
