@@ -94,7 +94,7 @@ public class StateMachine: MonoBehaviour{
             
             Timer = new Timer();
             Timer.StartTimer(CurrentGuest.MaxGreetingTime);
-
+            InputController.CreateGestures();
             CurrentGameState = GameState.InputGreetings;
         }
     }
@@ -103,9 +103,6 @@ public class StateMachine: MonoBehaviour{
     {
         if (CurrentGameState == GameState.InputGreetings)
         {
-            
-            InputController.InputGreetingInput();
-            
             if (Timer.Time == CurrentGuest.MaxGreetingTime)
             {
                 Player.miss();
@@ -117,7 +114,8 @@ public class StateMachine: MonoBehaviour{
     {
         if (CurrentGameState == GameState.CompareGreetings)
         {
-            
+            InputController.RemoveGestures();
+
             if (Player.PlayerGreeting == CurrentGuest.WantedGreeting)
             {
                 CurrentGuest.SetGreetedRight(true);

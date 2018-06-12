@@ -2,26 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Enums;
+using DigitalRubyShared;
 
 public class InputController{
 
     Player Player;
     Camera Camera;
+    GestureAdapter GestureAdapter;
+    StateMachine StateMachine;
+    
     public bool InputLocked;
 
     public List<Gesture> GestureList;
     public ICommand CheckInputCommand;
 
-    public InputController(Camera Camera, Player Player)
+    public InputController(Camera camera, Player player, GestureAdapter gestureAdapter, StateMachine stateMachine )
     {
-        this.Camera = Camera;
-        this.Player = Player;
+        Camera = camera;
+        Player = player;
+        GestureAdapter = gestureAdapter;
+        StateMachine = stateMachine;
     }
 
-    public void InputGreetingInput()
+    public void CreateGestures()
     {
-        checkGreeting();
-        releaseGreeting();
+        GestureAdapter.CreateTab(Tapgesture_StateUpdated);
+        s
+    }
+
+    public void RemoveGestures()
+    {
+        GestureAdapter.RemoveTab();
+
+    }
+
+    public void Tapgesture_StateUpdated(GestureRecognizer gesture)
+    {
+        if (gesture.State == GestureRecognizerState.Ended)
+        {
+            Player.PlayerGreeting = Greetings.Kiss;
+            StateMachine.CurrentGameState = GameState.CompareGreetings;
+        }
     }
 
     public void checkGreeting()

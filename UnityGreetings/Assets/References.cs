@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Enums;
+using DigitalRubyShared;
 
 public class References : MonoBehaviour {
 
@@ -27,6 +28,11 @@ public class References : MonoBehaviour {
     public ScoreController ScoreController;
 
     public GestureFactory GestureFactory;
+
+    public FingersScript FingersScript;
+
+    public GestureAdapter GestureAdapter;
+
     
     void Start () {
 
@@ -34,7 +40,8 @@ public class References : MonoBehaviour {
         PeopleFactory = new PeopleFactory(DataManager);
         GestureFactory = new GestureFactory(Player,StateMachine);
         ScoreController = new ScoreController(UIController);
-        InputController = new InputController(Camera, Player);
+        GestureAdapter = new GestureAdapter(FingersScript);
+        InputController = new InputController(Camera, Player, GestureAdapter,StateMachine);
 
     }
      
