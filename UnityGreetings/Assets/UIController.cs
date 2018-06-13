@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Enums;
 
 public class UIController : MonoBehaviour {
 
     public References References;
+    public StateMachine StateMachine; 
     public TextMeshProUGUI ComboLabel;
     public TextMeshProUGUI PointLabel;
-
-    Player Player;
-
+    
+    
     public void Start()
     {
-        Player = References.Player;
+        StateMachine = References.StateMachine;
     }
 
     public void SetPointLabel(int points)
@@ -35,8 +36,8 @@ public class UIController : MonoBehaviour {
         }
         else
         {
-            
-            Player.openDoor();
+
+            StateMachine.CurrentGameState = GameState.OpenDoor;
         }
 
     }

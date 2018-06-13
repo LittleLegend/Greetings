@@ -6,82 +6,45 @@ using DigitalRubyShared;
 
 public class InputController{
 
-    Player Player;
-    Camera Camera;
+    
     GestureAdapter GestureAdapter;
     StateMachine StateMachine;
     
-    public bool InputLocked;
+    public Greetings InputGreeting;
 
-    public List<Gesture> GestureList;
-    public ICommand CheckInputCommand;
-
-    public InputController(Camera camera, Player player, GestureAdapter gestureAdapter, StateMachine stateMachine )
+   
+    public InputController( GestureAdapter gestureAdapter, StateMachine stateMachine )
     {
-        Camera = camera;
-        Player = player;
+        GestureAdapter.CreateTab(Tapgesture_StateUpdated);
         GestureAdapter = gestureAdapter;
         StateMachine = stateMachine;
     }
+    
 
     public void CreateGestures()
     {
-        GestureAdapter.CreateTab(Tapgesture_StateUpdated);
+        
         
     }
 
     public void RemoveGestures()
     {
-        GestureAdapter.RemoveTab();
+        
 
     }
 
     public void Tapgesture_StateUpdated(GestureRecognizer gesture)
     {
-        if (gesture.State == GestureRecognizerState.Ended)
+        if (gesture.State == GestureRecognizerState.Ended && StateMachine.CurrentGameState == GameState.InputGreetings)
         {
-            Player.PlayerGreeting = Greetings.Kiss;
+            InputGreeting = Greetings.Kiss;
             StateMachine.CurrentGameState = GameState.CompareGreetings;
         }
-    }
 
-    public void checkGreeting()
-    {
-                for (int i = 0; i < GestureList.Count; i++)
-                {
-                    checkInput(GestureList[i]);
-                } 
-    }
-
-    public void releaseGreeting()
-    { 
-            if (Input.GetMouseButtonUp(0))
-            {
-                Player.greet();
-            
-            }
+        if (gesture.State == GestureRecognizerState.Ended && StateMachine.CurrentGameState == GameState.WatchScene)
+        {
+            StateMachine.CurrentGameState = GameState.CloseDoor;
+        }
     }
     
-    public void checkInput(Gesture Gesture)
-    {
-        Gesture.Screenpoint = GetScreenTouchPoint();
-        CheckInputCommand = new CheckInputCommand(Gesture);
-        CheckInputCommand.execute();
-    }
-    
-    public Vector3 GetScreenTouchPoint()
-    {
-        Vector3 ScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-        ScreenPoint = Camera.ScreenToViewportPoint(ScreenPoint);
-
-        return ScreenPoint;
-    }
-    
-    public void WatchSceneInput()
-    {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Player.closeDoor();
-                }
-    }
 }

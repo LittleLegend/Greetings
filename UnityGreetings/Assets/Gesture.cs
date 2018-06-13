@@ -6,7 +6,7 @@ using Enums;
 
 public abstract class Gesture{
     
-    public Player Player;
+    
 
     public StateMachine StateMachine;
 

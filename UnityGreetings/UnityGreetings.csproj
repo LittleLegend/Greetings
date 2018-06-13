@@ -13,12 +13,14 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectGenerator>VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>Android:13</UnityBuildTarget>
     <UnityVersion>2017.3.1p1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -249,8 +251,6 @@
   <ItemGroup>
     <Compile Include="Assets\AnimationController.cs" />
     <Compile Include="Assets\BalancingData.cs" />
-    <Compile Include="Assets\Bump.cs" />
-    <Compile Include="Assets\CheckInputCommand.cs" />
     <Compile Include="Assets\CSV2Table\Demo\C2TDemo.cs" />
     <Compile Include="Assets\CSV2Table\Demo\SampleTable.cs" />
     <Compile Include="Assets\CSV2Table\Scripts\CsvParser.cs" />
@@ -273,21 +273,13 @@
     <Compile Include="Assets\FingersLite\Script\Gestures\TapGestureRecognizer.cs" />
     <Compile Include="Assets\Gesture.cs" />
     <Compile Include="Assets\GestureAdapter.cs" />
-    <Compile Include="Assets\GestureFactory.cs" />
-    <Compile Include="Assets\GreetCommand.cs" />
-    <Compile Include="Assets\Hug.cs" />
-    <Compile Include="Assets\ICommand.cs" />
     <Compile Include="Assets\InputController.cs" />
-    <Compile Include="Assets\Kiss.cs" />
-    <Compile Include="Assets\None.cs" />
     <Compile Include="Assets\People.cs" />
     <Compile Include="Assets\PeopleData.cs" />
     <Compile Include="Assets\PeopleFactory.cs" />
-    <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\References.cs" />
     <Compile Include="Assets\SceneManager.cs" />
     <Compile Include="Assets\ScoreController.cs" />
-    <Compile Include="Assets\Shake.cs" />
     <Compile Include="Assets\StateMachine.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
