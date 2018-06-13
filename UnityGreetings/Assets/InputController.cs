@@ -27,7 +27,7 @@ public class InputController{
     public void CreateGestures()
     {
         GestureAdapter.CreateTab(Tapgesture_StateUpdated);
-        s
+        
     }
 
     public void RemoveGestures()
