@@ -6,36 +6,38 @@ using DigitalRubyShared;
 
 public class InputController{
 
-    Player Player;
-    Camera Camera;
+    
     GestureAdapter GestureAdapter;
     StateMachine StateMachine;
     
-    public bool InputLocked;
+    public Greetings InputGreeting;
 
-    public List<Gesture> GestureList;
-    public ICommand CheckInputCommand;
-
-    public InputController(Camera camera, Player player, GestureAdapter gestureAdapter, StateMachine stateMachine )
+   
+    public InputController( GestureAdapter gestureAdapter, StateMachine stateMachine )
     {
-        Camera = camera;
-        Player = player;
+        GestureAdapter.CreateTab(Tapgesture_StateUpdated);
         GestureAdapter = gestureAdapter;
         StateMachine = stateMachine;
     }
+    
 
     public void CreateGestures()
     {
+<<<<<<< HEAD
         GestureAdapter.CreateTab(Tapgesture_StateUpdated);
         GestureAdapter.CreateLongPress(Longpressgesture_StateUpdated);
         GestureAdapter.CreateSwipe(Swipegesture_StateUpdated);
         GestureAdapter.CreateScale(Scalesgesture_StateUpdated);
 
+=======
+        
+        
+>>>>>>> d26d74ecb895e454f6606da7d822d6714e83ba25
     }
 
     public void RemoveGestures()
     {
-        GestureAdapter.RemoveTab();
+        
 
     }
 
@@ -48,8 +50,9 @@ public class InputController{
 
     public void WatchsceneTabgesture_StateUpdated(GestureRecognizer gesture)
     {
-        if (gesture.State == GestureRecognizerState.Ended)
+        if (gesture.State == GestureRecognizerState.Ended && StateMachine.CurrentGameState == GameState.InputGreetings)
         {
+<<<<<<< HEAD
             
             StateMachine.CurrentGameState = GameState.CloseDoor;
         }
@@ -92,4 +95,16 @@ public class InputController{
     }
 
    
+=======
+            InputGreeting = Greetings.Kiss;
+            StateMachine.CurrentGameState = GameState.CompareGreetings;
+        }
+
+        if (gesture.State == GestureRecognizerState.Ended && StateMachine.CurrentGameState == GameState.WatchScene)
+        {
+            StateMachine.CurrentGameState = GameState.CloseDoor;
+        }
+    }
+    
+>>>>>>> d26d74ecb895e454f6606da7d822d6714e83ba25
 }

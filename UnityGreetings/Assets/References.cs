@@ -7,8 +7,7 @@ using DigitalRubyShared;
 public class References : MonoBehaviour {
 
     
-    public Player Player;
-
+    
     public Camera Camera;
 
     public PeopleFactory PeopleFactory;
@@ -26,22 +25,18 @@ public class References : MonoBehaviour {
     public StateMachine StateMachine;
 
     public ScoreController ScoreController;
-
-    public GestureFactory GestureFactory;
-
+    
     public FingersScript FingersScript;
 
     public GestureAdapter GestureAdapter;
 
     
     void Start () {
-
-        Player = new Player(StateMachine);
+        
         PeopleFactory = new PeopleFactory(DataManager);
-        GestureFactory = new GestureFactory(Player,StateMachine);
         ScoreController = new ScoreController(UIController);
         GestureAdapter = new GestureAdapter(FingersScript);
-        InputController = new InputController(Camera, Player, GestureAdapter,StateMachine);
+        InputController = new InputController( GestureAdapter,StateMachine);
 
     }
      
