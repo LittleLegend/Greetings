@@ -10,7 +10,9 @@ public class StateMachine: MonoBehaviour{
     Timer Timer;
 
     public References References;
-    
+
+    Player Player;
+    GestureFactory GestureFactory;
     PeopleFactory PeopleFactory;
     DataManager DataManager;
     ScoreController ScoreController;
@@ -46,12 +48,14 @@ public class StateMachine: MonoBehaviour{
     {
         if (CurrentGameState == GameState.Setup)
         {
-            
+            Player = References.Player;
+            GestureFactory = References.GestureFactory;
             PeopleFactory = References.PeopleFactory;
             DataManager = References.DataManager;
             ScoreController = References.ScoreController;
             InputController = References.InputController;
-            
+
+            InputController.GestureList = GestureFactory.createGestureList();
             DataManager.Load();
             CurrentGuest = PeopleFactory.createRandom(ScoreController.GetCombo());
             ScoreController.PeopleList.Add(CurrentGuest);
@@ -101,7 +105,7 @@ public class StateMachine: MonoBehaviour{
         {
             if (Timer.Time == CurrentGuest.MaxGreetingTime)
             {
-                //miss
+                Player.miss();
             }
 
         }
@@ -112,7 +116,7 @@ public class StateMachine: MonoBehaviour{
         {
             InputController.WatchSceneGesture();
 
-            if (InputController.InputGreeting == CurrentGuest.WantedGreeting)
+            if (Player.PlayerGreeting == CurrentGuest.WantedGreeting)
             {
                 CurrentGuest.SetGreetedRight(true);
                 ScoreController.AddCombo(CurrentGuest.combo);
@@ -138,12 +142,8 @@ public class StateMachine: MonoBehaviour{
     {
         if (CurrentGameState == GameState.WatchScene)
         {
-<<<<<<< HEAD
             
             AnimationController.WatchSceneAnimation(CurrentGuest, Player.PlayerGreeting);
-=======
-            AnimationController.WatchSceneAnimation(CurrentGuest, InputController.InputGreeting);
->>>>>>> d26d74ecb895e454f6606da7d822d6714e83ba25
         }
     }
 

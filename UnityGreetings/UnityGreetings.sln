@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityGreetings", "Assembly-CSharp.csproj", "{0DDDE760-0C36-8BD6-1524-092CD757A5A7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityGreetings", "Assembly-CSharp-Editor.csproj", "{B1ED7B34-1F6C-D6F8-04D3-8426DD64CBF3}"
