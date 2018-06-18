@@ -27,7 +27,10 @@ public class InputController{
     public void CreateGestures()
     {
         GestureAdapter.CreateTab(Tapgesture_StateUpdated);
-        s
+        GestureAdapter.CreateLongPress(Longpressgesture_StateUpdated);
+        GestureAdapter.CreateSwipe(Swipegesture_StateUpdated);
+        GestureAdapter.CreateScale(Scalesgesture_StateUpdated);
+
     }
 
     public void RemoveGestures()
@@ -36,7 +39,32 @@ public class InputController{
 
     }
 
-    public void Tapgesture_StateUpdated(GestureRecognizer gesture)
+    public void WatchSceneGesture()
+    {
+        GestureAdapter.RemoveTab();
+        GestureAdapter.CreateTab(WatchsceneTabgesture_StateUpdated);
+
+    }
+
+    public void WatchsceneTabgesture_StateUpdated(GestureRecognizer gesture)
+    {
+        if (gesture.State == GestureRecognizerState.Ended)
+        {
+            
+            StateMachine.CurrentGameState = GameState.CloseDoor;
+        }
+    }
+
+    public void Scalesgesture_StateUpdated(GestureRecognizer gesture)
+    {
+        if (gesture.State == GestureRecognizerState.Ended)
+        {
+            Player.PlayerGreeting = Greetings.Hug;
+            StateMachine.CurrentGameState = GameState.CompareGreetings;
+        }
+    }
+
+    public void Longpressgesture_StateUpdated(GestureRecognizer gesture)
     {
         if (gesture.State == GestureRecognizerState.Ended)
         {
@@ -45,43 +73,23 @@ public class InputController{
         }
     }
 
-    public void checkGreeting()
+    public void Tapgesture_StateUpdated(GestureRecognizer gesture)
     {
-                for (int i = 0; i < GestureList.Count; i++)
-                {
-                    checkInput(GestureList[i]);
-                } 
+        if (gesture.State == GestureRecognizerState.Ended)
+        {
+            Player.PlayerGreeting = Greetings.Bump;
+            StateMachine.CurrentGameState = GameState.CompareGreetings;
+        }
     }
 
-    public void releaseGreeting()
-    { 
-            if (Input.GetMouseButtonUp(0))
-            {
-                Player.greet();
-            
-            }
-    }
-    
-    public void checkInput(Gesture Gesture)
+    public void Swipegesture_StateUpdated(GestureRecognizer gesture)
     {
-        Gesture.Screenpoint = GetScreenTouchPoint();
-        CheckInputCommand = new CheckInputCommand(Gesture);
-        CheckInputCommand.execute();
+        if (gesture.State == GestureRecognizerState.Ended)
+        {
+            Player.PlayerGreeting = Greetings.Shake;
+            StateMachine.CurrentGameState = GameState.CompareGreetings;
+        }
     }
-    
-    public Vector3 GetScreenTouchPoint()
-    {
-        Vector3 ScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
-        ScreenPoint = Camera.ScreenToViewportPoint(ScreenPoint);
 
-        return ScreenPoint;
-    }
-    
-    public void WatchSceneInput()
-    {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    Player.closeDoor();
-                }
-    }
+   
 }

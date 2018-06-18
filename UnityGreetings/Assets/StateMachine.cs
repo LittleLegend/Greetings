@@ -114,7 +114,7 @@ public class StateMachine: MonoBehaviour{
     {
         if (CurrentGameState == GameState.CompareGreetings)
         {
-            InputController.RemoveGestures();
+            InputController.WatchSceneGesture();
 
             if (Player.PlayerGreeting == CurrentGuest.WantedGreeting)
             {
@@ -142,7 +142,7 @@ public class StateMachine: MonoBehaviour{
     {
         if (CurrentGameState == GameState.WatchScene)
         {
-            InputController.WatchSceneInput();
+            
             AnimationController.WatchSceneAnimation(CurrentGuest, Player.PlayerGreeting);
         }
     }
@@ -151,7 +151,7 @@ public class StateMachine: MonoBehaviour{
     {
         if (CurrentGameState == GameState.CloseDoor)
         {
-            
+            InputController.RemoveGestures();
             AnimationController.CloseDoorAnimation();
 
             if (AnimationController.IsDoorClosed())
